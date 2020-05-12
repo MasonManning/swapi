@@ -1,10 +1,10 @@
 import React from "react"
-
+import Button from 'react-bootstrap/Button'
 function Starships(props) {
-
+    const color = props.index%2 == 0 ? "#DDDDDD" : "#D4D5DB"
     return (
-        <div>
-            <h1>Name: {props.starship.name}</h1>
+        <div style={{backgroundColor: color}} >
+            <h1 style={{color: "#2C497F"}}>Name: {props.starship.name}</h1>
             <hr/>
             <h2>Cost In Credits: {props.starship.cost_in_credits}</h2>
             <h2>Essential Crew: {props.starship.crew}</h2>
