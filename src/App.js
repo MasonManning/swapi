@@ -11,8 +11,18 @@ class App extends Component {
     super()
     this.state = {
       starships: [],
-      isLoading: true
+      isLoading: true,
+      captainName: ""
     }
+    this.handleCptChange = this.handleCptChange.bind(this)
+    this.handleCptSubmit = this.handleCptSubmit.bind(this)
+  }
+  handleCptChange(event){
+    this.setState({captainName: event.target.value})
+  }
+  handleCptSubmit(event){
+    alert("Welcome Captain " + this.state.captainName)
+    event.preventDefault()
   }
 
   componentDidMount() {
@@ -43,6 +53,11 @@ class App extends Component {
     })
     return (
       <div className="App container" style={{backgroundColor: "#CCCCCC"}}>
+        <form onSubmit={this.handleCptSubmit}>
+          <input type="text" value={this.state.captainName} placeholder="Captain Name" onChange={this.handleCptChange} />
+          <br/>
+          <input type="submit" value="Submit" />
+        </form>
         <h1>{this.state.isLoading && "IsLoading!!"}</h1>
         <Row>
         {!this.state.isLoading && starshipsItem}
