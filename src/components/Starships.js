@@ -1,5 +1,6 @@
 import React from "react"
 import Button from 'react-bootstrap/Button'
+import PropTypes from 'prop-types'
 function Starships(props) {
     const color = props.index%2 == 0 ? "#DDDDDD" : "#D4D5DB"
     return (
@@ -14,5 +15,7 @@ function Starships(props) {
         </div>
     )
 }
-
+Starships.propTypes = {
+    starship: PropTypes.object.isRequired
+}
 export default Starships
