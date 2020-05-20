@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CaptainContext from '../CaptainContext'
 
 class Home extends Component {
     constructor() {
@@ -14,17 +15,20 @@ class Home extends Component {
     }
     handleCptSubmit(event) {
         alert("Welcome Captain " + this.state.captainName)
+        this.context.setCaptainName(this.state.captainName)
         event.preventDefault()
     }
     render() {
         return (
-            <form onSubmit={this.handleCptSubmit}>
-                <input type="text" value={this.state.captainName} placeholder="Captain Name" onChange={this.handleCptChange} />
-                <br />
-                <input type="submit" value="Submit" />
-            </form>
+            <CaptainContext.Provider value={"Test Captain Context"}>
+                <form onSubmit={this.handleCptSubmit}>
+                    <input type="text" value={this.state.captainName} placeholder="Captain Name" onChange={this.handleCptChange} />
+                    <br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </CaptainContext.Provider>
         )
     }
 }
-
+Home.contextType = CaptainContext
 export default Home

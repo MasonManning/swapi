@@ -3,10 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import CaptainContext from "./CaptainContext"
 
 ReactDOM.render(
   <React.StrictMode >
-    <App  />
+    <CaptainContext.Provider value={{
+      captainName: "",
+      setCaptainName: function(name) {
+        this.captainName = name
+      }
+    }}>
+      <App />
+    </CaptainContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

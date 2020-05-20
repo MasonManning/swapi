@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import StarshipItem from "./StarshipItem"
+import CaptainContext from "../CaptainContext"
 class Starship extends Component {
     constructor() {
         super()
@@ -41,6 +42,7 @@ class Starship extends Component {
         })
         return (
             <div>
+                <h1>Welcome Captain {this.context.captainName}</h1>
                 <h1>{this.state.isLoading && "IsLoading!!"}</h1>
                 <Row>
                     {!this.state.isLoading && starshipsItem}
@@ -50,4 +52,5 @@ class Starship extends Component {
     }
 }
 
+Starship.contextType=CaptainContext
 export default Starship
