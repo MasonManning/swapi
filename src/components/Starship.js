@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-// import StarshipItem from './components/StarshipItem'
 import StarshipItem from "./StarshipItem"
-// import StarshipItem from "./components/StarshipItem"
 class Starship extends Component {
     constructor() {
         super()

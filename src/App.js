@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import Starships from "./components/StarshipItem"
 import Starship from './components/Starship'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
