@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CaptainContext from '../CaptainContext'
+import Db from '../StorageManagement'
 
 class Home extends Component {
     constructor() {
@@ -16,6 +17,7 @@ class Home extends Component {
     handleCptSubmit(event) {
         alert("Welcome Captain " + this.state.captainName)
         this.context.setCaptainName(this.state.captainName)
+        Db.getInstance().setCaptainName("1", this.state.captainName)
         event.preventDefault()
     }
     render() {
