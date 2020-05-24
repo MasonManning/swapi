@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Home from './components/Home'
+import Login from './components/Login'
 import PrivateRoute from './components/PrivateRoute'
 import {
   BrowserRouter as Router,
@@ -35,6 +36,9 @@ class App extends Component {
                 <li>
                   <Link to="/Starships">Starships</Link>
                 </li>
+                <li>
+                  <Link to='/Login'>Login</Link>
+                </li>
               </ul>
             </nav>
 
@@ -42,6 +46,9 @@ class App extends Component {
               <PrivateRoute path="/Starships" isAuthenticated={false}>
                 <Starship />
               </PrivateRoute>
+              <Route path="/Login">
+                <Login/>
+              </Route>
               <Route path="/">
                 <Home />
               </Route>
