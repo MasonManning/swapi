@@ -7,11 +7,12 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Home from './components/Home'
+import PrivateRoute from './components/PrivateRoute'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 class App extends Component {
   constructor() {
@@ -38,9 +39,9 @@ class App extends Component {
             </nav>
 
             <Switch>
-              <Route path="/Starships">
-                <Starship/>
-              </Route>
+              <PrivateRoute path="/Starships" isAuthenticated={false}>
+                <Starship />
+              </PrivateRoute>
               <Route path="/">
                 <Home />
               </Route>
