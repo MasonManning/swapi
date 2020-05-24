@@ -9,6 +9,8 @@ import Row from 'react-bootstrap/Row'
 import Home from './components/Home'
 import Login from './components/Login'
 import PrivateRoute from './components/PrivateRoute'
+import SignUp from './components/SignUp'
+import Db from './StorageManagement'
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,6 +41,9 @@ class App extends Component {
                 <li>
                   <Link to='/Login'>Login</Link>
                 </li>
+                <li>
+                  <Link to='/SignUp'>Sign Up</Link>
+                </li>
               </ul>
             </nav>
 
@@ -46,6 +51,9 @@ class App extends Component {
               <PrivateRoute path="/Starships" isAuthenticated={false}>
                 <Starship />
               </PrivateRoute>
+              <Route path='/SignUp'>
+                <SignUp/>
+              </Route>
               <Route path="/Login">
                 <Login/>
               </Route>
@@ -54,7 +62,6 @@ class App extends Component {
               </Route>
             </Switch>
           </div>
-
         </div>
       </Router>
     );
