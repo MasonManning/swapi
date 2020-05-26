@@ -4,9 +4,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The goal of this project is to learn react in a fun manner utilizing the free star wars api hosted at swapi.dev. React will consume the api and display the data using different features of the framework.
 
-##Concepts Covered
+## Concepts Covered
 The following react concepts have been used in this project:
 * React Class Components
-* Api call using fetch
+* React Functional Components
+* Api Call Using Fetch
 * Basic Form
 * Context
+* Routing
+* Routing Redirect
+* UseState Hooks
