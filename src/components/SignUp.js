@@ -12,7 +12,7 @@ function SignUp(){
     }
     function handleSubmit(event){
         const l = Db.getInstance().SignUp(username, password)
-        console.log("error: " + l.error + " message: " + l.message)
+        // console.log("error: " + l.error + " message: " + l.message)
         console.log(localStorage)
         event.preventDefault()
     }

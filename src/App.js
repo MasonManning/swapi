@@ -24,6 +24,11 @@ class App extends Component {
       captainName: ""
     }
   }
+  handleLogout = (event) => {
+    Db.getInstance().Logout()
+    console.log(Db.getInstance().isAuthenticated())
+    console.log(localStorage)
+  }
 
   render() {
     return (
@@ -62,6 +67,9 @@ class App extends Component {
               </Route>
             </Switch>
           </div>
+          {Db.getInstance().isAuthenticated() && <button onClick={this.handleLogout}>Log Out</button>}
+          {Db.getInstance().isAuthenticated()}
+          {/* {Db.getInstance.isAuthenticated() ? <button type="text">Log Out</button> : ""} */}
         </div>
       </Router>
     );
