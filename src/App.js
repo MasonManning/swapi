@@ -21,18 +21,18 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      captainName: ""
+      captainName: "",
+      auth:"false"
     }
   }
   handleLogout = (event) => {
-    Db.getInstance().Logout()
-    console.log(Db.getInstance().isAuthenticated())
-    console.log(localStorage)
+    this.setState({auth:false})
   }
 
   render() {
     return (
       <Router>
+      {console.log("Auth is" + this.state.auth)}
         <div className="App container" style={{ backgroundColor: "#CCCCCC" }}>
           <div>
             <nav>
@@ -53,11 +53,11 @@ class App extends Component {
             </nav>
 
             <Switch>
-              <PrivateRoute path="/Starships" isAuthenticated={false}>
+              <PrivateRoute path="/Starships" isAuthenticated={this.state.auth}>
                 <Starship />
               </PrivateRoute>
               <Route path='/SignUp'>
-                <SignUp/>
+                <SignUp updateAuth={(val)=>{this.setState(({auth:val}))}} auth={this.state.auth} />
               </Route>
               <Route path="/Login">
                 <Login/>
@@ -67,9 +67,7 @@ class App extends Component {
               </Route>
             </Switch>
           </div>
-          {Db.getInstance().isAuthenticated() && <button onClick={this.handleLogout}>Log Out</button>}
-          {Db.getInstance().isAuthenticated()}
-          {/* {Db.getInstance.isAuthenticated() ? <button type="text">Log Out</button> : ""} */}
+          {this.state.auth==false && <button onClick={this.handleLogout}>Log Out</button>}
         </div>
       </Router>
     );

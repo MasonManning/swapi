@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
 import {withRouter} from 'react-router-dom'
 import Db from '../StorageManagement'
+import {UserConsumer} from '../UserContext'
 
-function SignUp(){
+function SignUp(props){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const handleChange = (event) => {
@@ -11,9 +12,10 @@ function SignUp(){
        name==="password" && setPassword(value)
     }
     function handleSubmit(event){
-        const l = Db.getInstance().SignUp(username, password)
-        // console.log("error: " + l.error + " message: " + l.message)
+        const register = Db.getInstance().SignUp(username, password)
+        !register.error && props.updateAuth(true)
         console.log(localStorage)
+        console.log(props.auth)
         event.preventDefault()
     }
        return(
