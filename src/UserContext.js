@@ -1,13 +1,23 @@
-import React from 'react'
-const context = React.createContext()
-const UserConsumer = context.Consumer
+import React, { useState } from 'react'
+const Context = React.createContext()
+const UserConsumer = Context.Consumer
 
-function UserContext(props){
-    return(
-        <context.Provider value={"This is the User Context"}>
+function UserContext(props) {
+    const [captainName, setCaptainName] = useState("")
+    const [credits, setCredits] = useState(500000)
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
+    const initSignUp = (userData) => {
+        setUsername(userData.username)
+        setPassword(userData.password)
+    }
+
+    return (
+        <Context.Provider value={{userData: {credits: credits}, initSignUp: initSignUp }}>
             {props.children}
-        </context.Provider>
+        </Context.Provider>
     )
 }
 
-export {UserContext as UserProvider, UserConsumer}
+export { UserContext as UserProvider, UserConsumer, Context }
