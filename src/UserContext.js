@@ -4,7 +4,7 @@ const UserConsumer = context.Consumer
 
 function UserContext(props){
     return(
-        <context.Provider>
+        <context.Provider value={"This is the User Context"}>
             {props.children}
         </context.Provider>
     )

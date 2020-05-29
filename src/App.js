@@ -17,6 +17,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import Hangar from './components/Hangar';
 class App extends Component {
   constructor() {
     super()
@@ -44,6 +45,9 @@ class App extends Component {
                   <Link to="/Starships">Starships</Link>
                 </li>
                 <li>
+                  <Link to='/Hangar'>Hangar</Link>
+                </li>
+                <li>
                   <Link to='/Login'>Login</Link>
                 </li>
                 <li>
@@ -61,6 +65,9 @@ class App extends Component {
               </Route>
               <Route path="/Login">
                 <Login/>
+              </Route>
+              <Route path='/Hangar'>
+                <Hangar/>
               </Route>
               <Route path="/">
                 <Home />

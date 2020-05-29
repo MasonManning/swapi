@@ -8,7 +8,7 @@ import {UserProvider} from "./UserContext"
 
 ReactDOM.render(
   <React.StrictMode >
-    <UserProvider>
+    <UserProvider >
       <CaptainContext.Provider value={{
         captainName: "",
         setCaptainName: function (name) {
