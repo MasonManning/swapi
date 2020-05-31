@@ -5,8 +5,7 @@ import {Context as UserContext} from '../UserContext'
 function Starships(props) {
     const color = props.index%2 == 0 ? "#DDDDDD" : "#D4D5DB"
     const userContext = useContext(UserContext)
-    const userData = userContext.getUserData()
-    const canBuy = userData.credits > props.starship.cost_in_credits
+    const canBuy = userContext.userData.credits > props.starship.cost_in_credits
     const handleBuy = (event) => {
         const isBought = userContext.deductCredits(props.starship.cost_in_credits)
         isBought && userContext.addStarship(props.starship)

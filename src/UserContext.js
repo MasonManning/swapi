@@ -23,15 +23,11 @@ function UserContext(props) {
         setStarship([...starships, newStarship])
         console.log(starships)
     }
-    const getUserData = () => {
-        return {captainName: captainName, username: username,
-        password: password, credits: credits, starships: starships}
-    }
     return (
         <Context.Provider value={{
-            userData: { credits: credits }, initSignUp: initSignUp,
+            userData: {captainName: captainName, username: username,
+        password: password, credits: credits, starships: starships }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship,
-            getUserData: getUserData
         }}>
             {props.children}
         </Context.Provider>
