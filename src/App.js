@@ -74,7 +74,7 @@ class App extends Component {
               </Route>
             </Switch>
           </div>
-          {this.state.auth==false && <button onClick={this.handleLogout}>Log Out</button>}
+          {this.state.auth && <button onClick={this.handleLogout}>Log Out</button>}
         </div>
       </Router>
     );

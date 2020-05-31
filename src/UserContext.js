@@ -7,14 +7,32 @@ function UserContext(props) {
     const [credits, setCredits] = useState(500000)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [starships, setStarship] = useState([])
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
         setPassword(userData.password)
     }
 
+    const deductCredits = (newCredits) => {
+        const credLeft = credits - newCredits
+        credLeft > 0 && setCredits((credLeft))
+        return credLeft > 0 ? true : false
+    }
+    const addStarship = (newStarship) => {
+        setStarship([...starships, newStarship])
+        console.log(starships)
+    }
+    const getUserData = () => {
+        return {captainName: captainName, username: username,
+        password: password, credits: credits, starships: starships}
+    }
     return (
-        <Context.Provider value={{userData: {credits: credits}, initSignUp: initSignUp }}>
+        <Context.Provider value={{
+            userData: { credits: credits }, initSignUp: initSignUp,
+            deductCredits: deductCredits, addStarship: addStarship,
+            getUserData: getUserData
+        }}>
             {props.children}
         </Context.Provider>
     )
