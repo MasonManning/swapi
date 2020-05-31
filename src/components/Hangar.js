@@ -1,6 +1,8 @@
 import React from 'react'
 import { UserConsumer } from '../UserContext'
 import StarshipItem from './StarshipItem'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 const Hangar = (props) => {
     return (
         <div>
@@ -9,8 +11,11 @@ const Hangar = (props) => {
                 {
                     v => (
                         <div>
-                        <h3>Credits: {v.userData.credits}</h3>
-                        {v.userData.starships.map(starship => (<StarshipItem starship={starship}/>))}
+                            <h3>Credits: {v.userData.credits}</h3>
+                            <Row>
+                                {v.userData.starships.map((starship, index) => 
+                                {return <Col md={4} key={index}> <StarshipItem starship={starship} /></Col> })}
+                            </Row>
                         </div>
                     )
                 }
