@@ -11,6 +11,8 @@ import Login from './components/Login'
 import PrivateRoute from './components/PrivateRoute'
 import SignUp from './components/SignUp'
 import Db from './StorageManagement'
+import Load from './components/Load'
+import Save from './components/Save'
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +30,9 @@ class App extends Component {
   }
   handleLogout = (event) => {
     this.setState({ auth: false })
+  }
+  handleSave = (event) => {
+    console.log("Save!")
   }
 
   render() {
@@ -51,10 +56,17 @@ class App extends Component {
 
               </ul>
             </nav>
-
+            {this.state.auth && <Link to='/Save'>Save</Link>}
+            {this.state.auth && <Link to='/Load'>Load</Link>}
             <Switch>
               <PrivateRoute path="/Starships" isAuthenticated={this.state.auth}>
                 <Starship />
+              </PrivateRoute>
+              <PrivateRoute path="/Save" isAuthenticated={this.state.auth}>
+                <Save/>
+              </PrivateRoute>
+              <PrivateRoute path="/Load" isAuthenticated={this.state.auth}>
+                <Load/>
               </PrivateRoute>
               <Route path='/SignUp'>
                 <SignUp updateAuth={(val) => { this.setState(({ auth: val })) }} auth={this.state.auth} />
