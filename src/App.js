@@ -23,17 +23,17 @@ class App extends Component {
     super()
     this.state = {
       captainName: "",
-      auth:"false"
+      auth: false
     }
   }
   handleLogout = (event) => {
-    this.setState({auth:false})
+    this.setState({ auth: false })
   }
 
   render() {
     return (
       <Router>
-      {console.log("Auth is" + this.state.auth)}
+        {console.log("Auth is" + this.state.auth)}
         <div className="App container" style={{ backgroundColor: "#CCCCCC" }}>
           <div>
             <nav>
@@ -47,12 +47,8 @@ class App extends Component {
                 <li>
                   <Link to='/Hangar'>Hangar</Link>
                 </li>
-                <li>
-                  <Link to='/Login'>Login</Link>
-                </li>
-                <li>
-                  <Link to='/SignUp'>Sign Up</Link>
-                </li>
+                {!this.state.auth ? <div><li><Link to='/Login'>Login</Link></li><li><Link to='/SignUp'>Sign Up</Link></li></div>: ''}
+
               </ul>
             </nav>
 
@@ -61,13 +57,13 @@ class App extends Component {
                 <Starship />
               </PrivateRoute>
               <Route path='/SignUp'>
-                <SignUp updateAuth={(val)=>{this.setState(({auth:val}))}} auth={this.state.auth} />
+                <SignUp updateAuth={(val) => { this.setState(({ auth: val })) }} auth={this.state.auth} />
               </Route>
               <Route path="/Login">
-                <Login/>
+                <Login />
               </Route>
               <Route path='/Hangar'>
-                <Hangar/>
+                <Hangar />
               </Route>
               <Route path="/">
                 <Home />
