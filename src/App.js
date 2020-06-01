@@ -60,7 +60,7 @@ class App extends Component {
                 <SignUp updateAuth={(val) => { this.setState(({ auth: val })) }} auth={this.state.auth} />
               </Route>
               <Route path="/Login">
-                <Login />
+                <Login updateAuth={(val) => { this.setState(({ auth: val })) }} />
               </Route>
               <Route path='/Hangar'>
                 <Hangar />

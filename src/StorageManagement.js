@@ -16,22 +16,25 @@ class StorageManagement {
     SignUp(username, password) {
         // Add user
         let users = JSON.parse(localStorage.getItem("Users"))
-        console.log(users)
         const user = {
             id: uuidv4(),
             name: username,
             password: password,
             credits: 0
         }
-        if(users != null && users.filter((user) => user.name===username).length){
-            return {error: true, message: "User already exists"} 
+        if (users != null && users.filter((user) => user.name === username).length) {
+            return { error: true, message: "User already exists" }
         }
-        !users ? localStorage.setItem("Users",JSON.stringify([user]) ) : localStorage.setItem("Users", JSON.stringify([...users, user]))
-        return {error: false, message: "Added Correctly HTTP 200 :D"}
+        !users ? localStorage.setItem("Users", JSON.stringify([user])) : localStorage.setItem("Users", JSON.stringify([...users, user]))
+        return { error: false, message: "Added Correctly HTTP 200 :D" }
     }
     Login(username, password) {
-        this.setAuthentication(true)
-        return localStorage.getItem("username") === username && localStorage.getItem("password") === password
+
+        let users = JSON.parse(localStorage.getItem("Users"))
+        if (users != null && users.filter((user) => user.name === username && user.password === password).length) {
+            return { error: false, message: "HTTP 200 Login Successfull" }
+        }
+        return { error: true, message: "Login Fail" }
     }
     isAuthenticated() {
         return localStorage.getItem('isAuthenticated')
@@ -43,7 +46,7 @@ class StorageManagement {
     setAuthentication(auth) {
         localStorage.setItem('isAuthenticated', auth)
     }
-    clearStorage(){
+    clearStorage() {
         localStorage.clear()
     }
 

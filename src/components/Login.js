@@ -1,5 +1,6 @@
 import React from "react"
 import {withRouter} from 'react-router-dom'
+import Db from '../StorageManagement'
 
 class Login extends React.Component {
     constructor(props) {
@@ -10,13 +11,13 @@ class Login extends React.Component {
         }
     }
     handleSubmit = (event) => {
-        // Check if there is a username and password match in localStorage.
-        // If match, redirect to home. 
-        // If not, stay on this page and display error message.
+        const login = Db.getInstance().Login(this.state.username, this.state.password)
         console.log(this.state.username)
+        !login.error && this.props.updateAuth(true)
         event.preventDefault()
         this.props.history.push("/")
     }
+
     handleChange = (event) => {
         const {name, value } = event.target
         console.log(name)
