@@ -20,7 +20,8 @@ class StorageManagement {
             id: uuidv4(),
             name: username,
             password: password,
-            credits: 0
+            credits: 0,
+            saved: []
         }
         if (users != null && users.filter((user) => user.name === username).length) {
             return { error: true, message: "User already exists" }
@@ -28,11 +29,16 @@ class StorageManagement {
         !users ? localStorage.setItem("Users", JSON.stringify([user])) : localStorage.setItem("Users", JSON.stringify([...users, user]))
         return { error: false, message: "Added Correctly HTTP 200 :D" }
     }
+    getSaved(id){
+        let users = JSON.parse(localStorage.getItem("Users"))
+        return users.filter(u => u.id == id).saved
+    }
     Login(username, password) {
 
         let users = JSON.parse(localStorage.getItem("Users"))
-        if (users != null && users.filter((user) => user.name === username && user.password === password).length) {
-            return { error: false, message: "HTTP 200 Login Successfull" }
+        let doesMatch = users.filter((user) => user.name === username && user.password === password).length
+        if (users != null && doesMatch) {
+            return { error: false, message: "HTTP 200 Login Successfull", id: doesMatch.id }
         }
         return { error: true, message: "Login Fail" }
     }

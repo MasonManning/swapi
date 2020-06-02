@@ -8,11 +8,14 @@ function UserContext(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [starships, setStarship] = useState([])
+    const [id, setId] = useState("")
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
         setPassword(userData.password)
+        setId(userData.id)
     }
+
 
     const deductCredits = (newCredits) => {
         const credLeft = credits - newCredits
