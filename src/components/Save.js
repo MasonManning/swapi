@@ -1,7 +1,7 @@
 import React from 'react'
 import Db from '../StorageManagement'
-import {UserConsumer} from '../UserContext'
-
+import { UserConsumer } from '../UserContext'
+import StateItem from './StateItem'
 const Save = () => {
     // Get user Id from the UserContext.
     // Get all of the saved files from localStorage for said Id.
@@ -10,12 +10,23 @@ const Save = () => {
     // Implement Save Override.
     // Add Back/Cancel Button
     return (
+
         <UserConsumer>
             {
-                UserData => {
-                    console.log(UserData)
+                consumer => {
                     //Call getSaved from theStorageManagement to get a list of all saved files.
-                return <h1>Save Comp: {UserData.username}</h1>
+                    const savedList = Db.getInstance().getSaved(consumer.userData.id)
+                    console.log(savedList)
+                    return (
+                        <div>
+                            {savedList && console.log("Display Saved Items by maping over the savedList and outputting the StyateItem component")}
+                            {savedList && "Display Saved Items by maping over the savedList and outputting the StyateItem component"}
+                            
+                        <StateItem />
+                        <div onClick={(e)=>{Db.getInstance().newSave(consumer.userData)}} style={{backgroundColor: "red", height: "150px"}}></div>
+                            <h1>Save Comp: {consumer.userData.username}</h1>
+                        </div>
+                    )
                 }
             }
         </UserConsumer>

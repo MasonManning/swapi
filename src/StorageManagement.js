@@ -27,11 +27,40 @@ class StorageManagement {
             return { error: true, message: "User already exists" }
         }
         !users ? localStorage.setItem("Users", JSON.stringify([user])) : localStorage.setItem("Users", JSON.stringify([...users, user]))
-        return { error: false, message: "Added Correctly HTTP 200 :D" }
+        return { error: false, message: "Added Correctly HTTP 200 :D", userId: user.id }
     }
-    getSaved(id){
+    getSaved(id) {
         let users = JSON.parse(localStorage.getItem("Users"))
-        return users.filter(u => u.id == id).saved
+        const user = users.filter(u => u.id == id)
+        // TODO
+        // There should only be one user per id, but check length of user anyway.
+        // Throw and error if it is greater than one or return the first.
+        // Handle no matches showing up.
+        return user.saved
+    }
+    newSave(userData) {
+        console.log("newSave")
+        console.log(userData)
+        if (userData == null) {
+            console.log("UserData is null")
+            return false
+        }
+        let users = JSON.parse(localStorage.getItem("Users"))
+        const user = users.filter(u => u.id == userData.id)
+        const newSave = createSavedItem(userData)
+
+        console.log(newSave)
+        if (newSave) {
+
+            // user.saved && user.saved.push(newSave)
+            // user.saved && user.saved = []
+            // !user.saved && user.saved = [newSave]
+            // user.saved.push(newSave)
+            console.log(newSave)
+            console.log("above new State is")
+            return true
+        }
+        return false
     }
     Login(username, password) {
 
@@ -56,5 +85,14 @@ class StorageManagement {
         localStorage.clear()
     }
 
+}
+function createSavedItem(userData) {
+    console.log("CreateSasvedItem")
+    console.log(userData)
+    return ({
+        saveId: uuidv4(),
+        credits: userData.credits,
+        starship: [userData.starship]
+    })
 }
 export default StorageManagement

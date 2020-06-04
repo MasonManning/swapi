@@ -17,8 +17,8 @@ function SignUp(props) {
         !register.error && props.updateAuth(true)
         console.log(localStorage)
         console.log(props.auth)
+        !register.error && context.initSignUp({username: username, password: password, id: register.userId})
         event.preventDefault()
-        context.initSignUp({username: username, password: password})
     }
     let init = ()=>{}
     return (

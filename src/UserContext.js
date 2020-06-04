@@ -4,7 +4,7 @@ const UserConsumer = Context.Consumer
 
 function UserContext(props) {
     const [captainName, setCaptainName] = useState("")
-    const [credits, setCredits] = useState(500000)
+    const [credits, setCredits] = useState()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [starships, setStarship] = useState([])
@@ -14,6 +14,8 @@ function UserContext(props) {
         setUsername(userData.username)
         setPassword(userData.password)
         setId(userData.id)
+        setCredits(500000)
+        // setCredits(userData.credits)
     }
 
 
@@ -29,7 +31,7 @@ function UserContext(props) {
     return (
         <Context.Provider value={{
             userData: {captainName: captainName, username: username,
-        password: password, credits: credits, starships: starships }, initSignUp: initSignUp,
+        password: password, credits: credits, starships: starships, id, id }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship,
         }}>
             {props.children}
