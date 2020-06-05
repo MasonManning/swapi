@@ -39,7 +39,6 @@ class StorageManagement {
         return user.saved
     }
     newSave(userData) {
-        console.log("newSave")
         console.log(userData)
         if (userData == null) {
             console.log("UserData is null")
@@ -48,6 +47,10 @@ class StorageManagement {
         let users = JSON.parse(localStorage.getItem("Users"))
         const user = users.filter(u => u.id == userData.id)
         const newSave = createSavedItem(userData)
+        console.log("Users ad user")
+        console.log(users)
+        console.log("userID" + userData.id)
+        console.log(user)
 
         console.log(newSave)
         if (newSave) {
@@ -58,6 +61,10 @@ class StorageManagement {
             // user.saved.push(newSave)
             console.log(newSave)
             console.log("above new State is")
+            console.log("User saved file below")
+            console.log(user.saved)
+            console.log(user)
+
             return true
         }
         return false
@@ -65,7 +72,9 @@ class StorageManagement {
     Login(username, password) {
 
         let users = JSON.parse(localStorage.getItem("Users"))
-        let doesMatch = users.filter((user) => user.name === username && user.password === password).length
+        let doesMatch = users.find((user) => user.name === username && user.password === password)
+        console.log("Login: Doesmatch is: ")
+        console.log(doesMatch)
         if (users != null && doesMatch) {
             return { error: false, message: "HTTP 200 Login Successfull", id: doesMatch.id }
         }

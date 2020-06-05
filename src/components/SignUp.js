@@ -15,8 +15,6 @@ function SignUp(props) {
     function handleSubmit(event) {
         const register = Db.getInstance().SignUp(username, password)
         !register.error && props.updateAuth(true)
-        console.log(localStorage)
-        console.log(props.auth)
         !register.error && context.initSignUp({username: username, password: password, id: register.userId})
         event.preventDefault()
     }

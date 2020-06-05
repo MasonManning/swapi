@@ -14,7 +14,9 @@ class Login extends React.Component {
         const login = Db.getInstance().Login(this.state.username, this.state.password)
         console.log(this.state.username)
         !login.error && this.props.updateAuth(true)
-        !login.error && this.context.initSignUp({username: this.state.username, password: this.state.password})
+        console.log(login)
+        console.log("Login ID is: " + login.id)
+        !login.error && this.context.initSignUp({username: this.state.username, password: this.state.password, id: login.id })
         event.preventDefault()
         this.props.history.push("/")
     }
