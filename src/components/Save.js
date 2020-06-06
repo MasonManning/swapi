@@ -16,7 +16,6 @@ const Save = () => {
                 consumer => {
                     //Call getSaved from theStorageManagement to get a list of all saved files.
                     const savedList = Db.getInstance().getSaved(consumer.userData.id)
-                    console.log(savedList)
                     return (
                         <div>
                             {savedList && console.log("Display Saved Items by maping over the savedList and outputting the StyateItem component")}

@@ -26,7 +26,6 @@ function UserContext(props) {
     }
     const addStarship = (newStarship) => {
         setStarship([...starships, newStarship])
-        console.log(starships)
     }
     return (
         <Context.Provider value={{

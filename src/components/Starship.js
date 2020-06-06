@@ -24,7 +24,6 @@ class Starship extends Component {
         fetch("https://swapi.dev/api/starships/")
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 this.setState(ps => {
                     const list = []
                     return ({
