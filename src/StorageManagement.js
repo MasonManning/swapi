@@ -98,7 +98,7 @@ function createSavedItem(userData) {
     return ({
         saveId: uuidv4(),
         credits: userData.credits,
-        starship: [userData.starship]
+        starships: [userData.starships]
     })
 }
 export default StorageManagement
