@@ -43,12 +43,13 @@ class StorageManagement {
             return false
         }
         let users = JSON.parse(localStorage.getItem("Users"))
-        const user = users.filter(u => u.id == userData.id)
+        const user = users.filter(u => u.id == userData.id)[0]
         const newSave = createSavedItem(userData)
         if (newSave) {
 
             // console.log(user)
-            user.saved != null ? user.saved = [...user.saved, newSave] : user.saved = [newSave]
+            console.log("user.saved : " + user.saved)
+            !user.saved ? user.saved = [...user.saved, newSave] : user.saved = [newSave]
         // const user = users.filter(u => u.id == userData.id)
             let susers = users.map(u => u.id === userData.id ? user : u)
             
@@ -71,6 +72,8 @@ class StorageManagement {
 
         let users = JSON.parse(localStorage.getItem("Users"))
         let doesMatch = users.find((user) => user.name === username && user.password === password)
+        console.log(users)
+        console.log(doesMatch)
         if (users != null && doesMatch) {
             return { error: false, message: "HTTP 200 Login Successfull", id: doesMatch.id }
         }
