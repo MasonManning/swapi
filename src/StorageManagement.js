@@ -31,7 +31,7 @@ class StorageManagement {
     }
     getSaved(id) {
         let users = JSON.parse(localStorage.getItem("Users"))
-        const user = users.filter(u => u.id == id)
+        const user = users.filter(u => u.id == id)[0]
         // TODO
         // There should only be one user per id, but check length of user anyway.
         // Throw and error if it is greater than one or return the first.

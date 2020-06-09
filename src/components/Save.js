@@ -15,17 +15,17 @@ const Save = () => {
             {
                 consumer => {
                     //Call getSaved from theStorageManagement to get a list of all saved files.
-                    const savedList = Db.getInstance().getSaved(consumer.userData.id)
+                    let savedList = Db.getInstance().getSaved(consumer.userData.id)
                     return (
                         <div>
                             {savedList && console.log("Display Saved Items by maping over the savedList and outputting the StyateItem component")}
                             {savedList && "Display Saved Items by maping over the savedList and outputting the StyateItem component"}
-                            
-                        <StateItem />
-                        <div onClick={(e)=>{
-                            Db.getInstance().newSave(consumer.userData)
-                            
-                            }} style={{backgroundColor: "red", height: "150px"}}></div>
+
+                            <StateItem />
+                            <div onClick={(e) => {
+                                Db.getInstance().newSave(consumer.userData)
+
+                            }} style={{ backgroundColor: "red", height: "150px" }}></div>
                             <h1>Save Comp: {consumer.userData.username}</h1>
                         </div>
                     )
