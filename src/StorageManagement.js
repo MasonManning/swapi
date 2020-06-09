@@ -47,23 +47,12 @@ class StorageManagement {
         const newSave = createSavedItem(userData)
         if (newSave) {
 
-            // console.log(user)
-            console.log("user.saved : " + user.saved)
-            !user.saved ? user.saved = [...user.saved, newSave] : user.saved = [newSave]
-        // const user = users.filter(u => u.id == userData.id)
+            user.saved = [...user.saved, newSave]
             let susers = users.map(u => u.id === userData.id ? user : u)
             
             console.log(susers)
 
             localStorage.setItem("Users", JSON.stringify(susers))
-            // user.saved.push(newSave)
-            // console.log(user.saved)
-
-            // user.saved && user.saved.push(newSave)
-            // user.saved && user.saved = []
-            // !user.saved && user.saved = [newSave]
-            // user.saved.push(newSave)
-
             return true
         }
         return false
