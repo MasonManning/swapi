@@ -16,3 +16,15 @@ The following react/javascript concepts and features have been used in this proj
 * UseState Hooks
 * useContext Hooks
 * localStorage
+
+## About
+This react web app has implemented the following functionality:
+* Sign Up 
+* Login
+* Navigate to different pages (Home,Starships,Hangar)
+* Once Logged in the SignUp/Login buttons will dissapear
+* Log Out
+* Ability to buy Starships from the Starships page
+* Display bought ships on the Hangar Page
+* Bought ships are stored in the UserContext along with other user data
+* Ability to save which will write the saved UserData to localStorage
