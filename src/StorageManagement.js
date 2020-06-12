@@ -53,7 +53,7 @@ class StorageManagement {
             console.log(susers)
 
             localStorage.setItem("Users", JSON.stringify(susers))
-            return true
+            return newSave 
         }
         return false
     }

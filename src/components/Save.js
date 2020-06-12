@@ -20,11 +20,14 @@ const Save = () => {
                         <div>
                             {savedList && console.log("Display Saved Items by maping over the savedList and outputting the StyateItem component")}
                             {savedList && "Display Saved Items by maping over the savedList and outputting the StyateItem component"}
-                            {savedList && savedList.map((i,index) => <StateItem data={i} index={index}/> )}
+                            {savedList && savedList.map((i,index) => <StateItem data={i} key={i.saveId} index={index}/> )}
                             {savedList && console.log(savedList)}
 
                             <div onClick={(e) => {
-                                Db.getInstance().newSave(consumer.userData)
+                                const hasSaved = Db.getInstance().newSave(consumer.userData)
+                                console.log("hasValue")
+                                hasSaved && savedList.push(<StateItem data={hasSaved} key={hasSaved.saveId} index={savedList.length+1} />)
+                                console.log(savedList)
 
                             }} style={{ backgroundColor: "red", height: "150px" }}><h1>NEW SAVE</h1></div>
                             <h1>Save Comp: {consumer.userData.username}</h1>

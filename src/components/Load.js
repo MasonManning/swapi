@@ -1,4 +1,7 @@
 import React from 'react';
+import Db from '../StorageManagement'
+import { UserConsumer } from '../UserContext'
+import StateItem from './StateItem'
 
 function Load(props) {
     return (
@@ -10,6 +13,20 @@ function Load(props) {
         //      flag of whether to load or save to the component.
         // It'll probably be more DRY that way.
         <div>
+
+        <UserConsumer>
+            {
+
+                consumer => {
+                    let savedList = Db.getInstance().getSaved(consumer.userData.id)
+                    return(
+                        <div>
+                            {savedList && savedList.map((i,index) => <StateItem data={i} key={i.saveId} index={index}/> )}
+                        </div>
+                    )
+                }
+            }
+        </UserConsumer>
            Load Files Here 
         </div>
     );
