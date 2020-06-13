@@ -21,7 +21,10 @@ function Load(props) {
                     let savedList = Db.getInstance().getSaved(consumer.userData.id)
                     return(
                         <div>
-                            {savedList && savedList.map((i,index) => <StateItem data={i} key={i.saveId} index={index}/> )}
+                            {savedList && savedList.map((i,index) => <div onClick={(event)=>{
+                                console.log("clicked" + i.credits)
+                                consumer.load(i)
+                                }}><StateItem data={i} key={i.saveId} index={index}/></div> )}
                         </div>
                     )
                 }

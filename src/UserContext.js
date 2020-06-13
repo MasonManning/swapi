@@ -27,11 +27,15 @@ function UserContext(props) {
     const addStarship = (newStarship) => {
         setStarship([...starships, newStarship])
     }
+    const load = (save) => {
+        setCredits(save.credits)
+        setStarship(save.starships)
+    }
     return (
         <Context.Provider value={{
             userData: {captainName: captainName, username: username,
         password: password, credits: credits, starships: starships, id, id }, initSignUp: initSignUp,
-            deductCredits: deductCredits, addStarship: addStarship,
+            deductCredits: deductCredits, addStarship: addStarship, load: load,
         }}>
             {props.children}
         </Context.Provider>
