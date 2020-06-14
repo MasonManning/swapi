@@ -18,11 +18,14 @@ function UserContext(props) {
         // setCredits(userData.credits)
     }
 
-
     const deductCredits = (newCredits) => {
         const credLeft = credits - newCredits
         credLeft > 0 && setCredits((credLeft))
         return credLeft > 0 ? true : false
+    }
+    const addCredits = (c) => {
+        setCredits(((credits + parseInt(c))))
+        return true 
     }
     const addStarship = (newStarship) => {
         setStarship([...starships, newStarship])
@@ -35,7 +38,7 @@ function UserContext(props) {
         <Context.Provider value={{
             userData: {captainName: captainName, username: username,
         password: password, credits: credits, starships: starships, id, id }, initSignUp: initSignUp,
-            deductCredits: deductCredits, addStarship: addStarship, load: load,
+            deductCredits: deductCredits, addStarship: addStarship, load: load, addCredits: addCredits
         }}>
             {props.children}
         </Context.Provider>

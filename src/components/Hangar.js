@@ -14,7 +14,8 @@ const Hangar = (props) => {
                             <h3>Credits: {v.userData.credits}</h3>
                             <Row>
                                 {v.userData.starships.map((starship, index) => 
-                                {return <Col md={4} key={index}> <StarshipItem starship={starship} /></Col> })}
+                                {return <Col md={4} key={index}> <StarshipItem starship={starship} /><button onClick={(event) => {v.addCredits(starship.cost_in_credits)
+                                }}>Sell</button></Col> })}
                             </Row>
                         </div>
                     )
