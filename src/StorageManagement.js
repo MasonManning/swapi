@@ -81,6 +81,9 @@ class StorageManagement {
     clearStorage() {
         localStorage.clear()
     }
+    getId(){
+        return uuidv4()
+    }
 
 }
 function createSavedItem(userData) {

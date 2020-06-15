@@ -2,13 +2,16 @@ import React, {useContext} from "react"
 import Button from 'react-bootstrap/Button'
 import PropTypes from 'prop-types'
 import {Context as UserContext} from '../UserContext'
+import { v4 as uuidv4 } from 'uuid'
 function Starships(props) {
     const color = props.index%2 == 0 ? "#DDDDDD" : "#D4D5DB"
     const userContext = useContext(UserContext)
     const canBuy = userContext.userData.credits > props.starship.cost_in_credits
     const handleBuy = (event) => {
         const isBought = userContext.deductCredits(props.starship.cost_in_credits)
-        isBought && userContext.addStarship(props.starship)
+        const starship = {...props.starship}
+        starship.id = uuidv4()
+        isBought && userContext.addStarship(starship)
     }
     return (
         <div style={{backgroundColor: color}} >
