@@ -29,7 +29,7 @@ function SignUp(props) {
         </UserConsumer> */}
             <form onSubmit={handleSubmit}>
                 <input type='text' onChange={handleChange} placeholder="Username" name="username" />
-                <input type='text' onChange={handleChange} placeholder='password' name='password' />
+                <input type='text' onChange={handleChange} placeholder='Password' name='password' />
                 <input type='Submit' />
             </form>
         </div>
