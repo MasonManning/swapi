@@ -46,12 +46,7 @@ class App extends Component {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li>
-                  <Link to="/Starships">Starships</Link>
-                </li>
-                <li>
-                  <Link to='/Hangar'>Hangar</Link>
-                </li>
+                {this.state.auth && <div><li><Link to='/Starships'>Starships</Link></li><li><Link to='/Hangar'>Hangar</Link></li></div>}
                 {!this.state.auth ? <div><li><Link to='/Login'>Login</Link></li><li><Link to='/SignUp'>Sign Up</Link></li></div>: ''}
 
               </ul>
