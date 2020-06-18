@@ -13,13 +13,14 @@ class StorageManagement {
     getCaptainName() {
         return localStorage.getItem("CaptainName")
     }
-    SignUp(username, password) {
+    SignUp(username, password, captainName) {
         // Add user
         let users = JSON.parse(localStorage.getItem("Users"))
         const user = {
             id: uuidv4(),
             name: username,
             password: password,
+            captainName: captainName,
             credits: 0,
             saved: []
         }

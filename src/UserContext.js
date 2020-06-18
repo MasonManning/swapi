@@ -13,6 +13,7 @@ function UserContext(props) {
     const initSignUp = (userData) => {
         setUsername(userData.username)
         setPassword(userData.password)
+        setCaptainName(userData.captainName)
         setId(userData.id)
         setCredits(500000)
         // setCredits(userData.credits)
