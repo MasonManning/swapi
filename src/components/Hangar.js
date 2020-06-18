@@ -6,11 +6,11 @@ import Col from 'react-bootstrap/Col'
 const Hangar = (props) => {
     return (
         <div>
-            <h1>Welcome To The Hanger Captain</h1>
             <UserConsumer>
                 {
                     v => (
                         <div>
+                            <h1>Welcome To The Hanger Captain {v.userData.captainName}</h1>
                             <h3>Credits: {v.userData.credits}</h3>
                             <Row>
                                 {v.userData.starships.map((starship, index) => 

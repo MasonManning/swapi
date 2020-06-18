@@ -5,9 +5,9 @@ import Db from '../StorageManagement'
 class Home extends Component {
     constructor() {
         super()
-        this.state = {
-            captainName: ""
-        }
+        // this.state = {
+        //     captainName: ""
+        // }
         // this.handleCptChange = this.handleCptChange.bind(this)
         // this.handleCptSubmit = this.handleCptSubmit.bind(this)
     }

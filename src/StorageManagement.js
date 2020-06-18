@@ -33,6 +33,8 @@ class StorageManagement {
     getSaved(id) {
         let users = JSON.parse(localStorage.getItem("Users"))
         const user = users.filter(u => u.id == id)[0]
+        console.log("Geet Saved")
+        console.log(user)
         // TODO
         // There should only be one user per id, but check length of user anyway.
         // Throw and error if it is greater than one or return the first.
@@ -65,7 +67,7 @@ class StorageManagement {
         console.log(users)
         console.log(doesMatch)
         if (users != null && doesMatch) {
-            return { error: false, message: "HTTP 200 Login Successfull", id: doesMatch.id }
+            return { error: false, message: "HTTP 200 Login Successfull", userData: doesMatch}
         }
         return { error: true, message: "Login Fail" }
     }

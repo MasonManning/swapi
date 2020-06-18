@@ -1,7 +1,7 @@
 import React from "react"
 import { withRouter } from 'react-router-dom'
 import Db from '../StorageManagement'
-import { Context} from '../UserContext'
+import { Context } from '../UserContext'
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -9,11 +9,14 @@ class Login extends React.Component {
             username: "",
             password: ""
         }
-    } 
+    }
     handleSubmit = (event) => {
         const login = Db.getInstance().Login(this.state.username, this.state.password)
         !login.error && this.props.updateAuth(true)
-        !login.error && this.context.initSignUp({username: this.state.username, password: this.state.password, id: login.id })
+        !login.error && this.context.initSignUp({
+            username: this.state.username, password: this.state.password,
+            id: login.userData.id, captainName: login.userData.captainName
+        })
         event.preventDefault()
         this.props.history.push("/")
     }
