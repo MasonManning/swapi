@@ -26,8 +26,6 @@ class Login extends React.Component {
         this.setState(ps => ({ [name]: value }))
     }
     render() {
-        let savedList = Db.getInstance().getSaved(consumer.userData.id)
-        context.load(savedList[savedList.length -1])
         return (
             // <form onSubmit={this.handleSubmit}>
             <form onSubmit={this.handleSubmit}>
