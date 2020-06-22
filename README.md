@@ -28,3 +28,9 @@ This react web app has implemented the following functionality:
 * Display bought ships on the Hangar Page
 * Bought ships are stored in the UserContext along with other user data
 * Ability to save which will write the saved UserData to localStorage
+
+## How To Play
+* Sign Up
+* Buy A Spaceship
+* Battle or Trade (Not implemented yet)
+

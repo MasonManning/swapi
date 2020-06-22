@@ -13,6 +13,7 @@ import SignUp from './components/SignUp'
 import Db from './StorageManagement'
 import Load from './components/Load'
 import Save from './components/Save'
+import Mission from './components/Mission'
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,7 +47,7 @@ class App extends Component {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                {this.state.auth && <div><li><Link to='/Starships'>Starships</Link></li><li><Link to='/Hangar'>Hangar</Link></li><li><Link to='Mission'>Mission</Link></li></div>}
+                {this.state.auth && <div><li><Link to='/Starships'>Starships</Link></li><li><Link to='/Hangar'>Hangar</Link></li><li><Link to='/Mission'>Mission</Link></li></div>}
                 {!this.state.auth ? <div><li><Link to='/Login'>Login</Link></li><li><Link to='/SignUp'>Sign Up</Link></li></div>: ''}
 
               </ul>
@@ -56,6 +57,9 @@ class App extends Component {
             <Switch>
               <PrivateRoute path="/Starships" isAuthenticated={this.state.auth}>
                 <Starship />
+              </PrivateRoute>
+              <PrivateRoute path="/Mission" isAuthenticated={this.state.auth}>
+                <Mission/>
               </PrivateRoute>
               <PrivateRoute path="/Save" isAuthenticated={this.state.auth}>
                 <Save/>
