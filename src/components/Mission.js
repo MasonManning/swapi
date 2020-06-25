@@ -12,6 +12,7 @@ function Mission() {
     return (
         <div>
             <h1>Select A Mission</h1>
+            
             {Mission.map((item, index) =>  <BattlefieldItem key={index} item={item}/>            )}
         </div>
     )
