@@ -32,5 +32,8 @@ This react web app has implemented the following functionality:
 ## How To Play
 * Sign Up
 * Buy A Spaceship
-* Battle or Trade (Not implemented yet)
-
+* Battle or Trade 
+* Select A Mission
+* Select Spaceships To Send On Mission
+* Wait For Mission Timeout to complete
+* Earn Credits From Missions (Not Implemented
