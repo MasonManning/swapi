@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { Context } from '../UserContext'
+import StarshipItem from './StarshipItem'
 function MissionModal() {
     const [show, setShow] = useState(false);
     const [select, setSelect] = useState([])
@@ -14,12 +15,17 @@ function MissionModal() {
     console.log(context)
 
     const StarshipSelection = context.userData.starships.map(item => {
-        return (<div>
-            <h1>{item.name}</h1>
-            <button onClick={selectHandler}>Select</button>
-        </div>
+        return(
+            <StarshipItem starship={item} mission={true}></StarshipItem>
         )
     })
+    // const StarshipSelection = context.userData.starships.map(item => {
+    //     return (<div>
+    //         <h1>{item.name}</h1>
+    //         <button onClick={selectHandler}>Select</button>
+    //     </div>
+    //     )
+    // })
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
