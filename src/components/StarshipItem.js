@@ -13,8 +13,11 @@ function Starships(props) {
         starship.id = uuidv4()
         isBought && userContext.addStarship(starship)
     }
+    const handlesMission = () => {
+        props.selectedStarshipHandler(props.starship)
+    }
     // I'm not too sure if this is bad practise? Maybe I should create a MissionItem Component to hold the below code.
-    const mission = <div>
+    const mission = <div onClick={handlesMission}>
         <h1>Name: {props.starship.name}</h1>
         <h2>Health: **Not Yet Implemented</h2>
     </div>
