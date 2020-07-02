@@ -4,28 +4,21 @@ import { Context } from '../UserContext'
 import StarshipItem from './StarshipItem'
 function MissionModal() {
     const [show, setShow] = useState(false);
-    const [select, setSelect] = useState([])
+    const [selected, setSelected] = useState([])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const context = useContext(Context)
-    const selectHandler = (event) => {
-       return console.log("Add Starship")
+    const starshipHandler = (ship) => {
+        const isSelected = selected.find(starship => starship.id === ship.id)
+        const f = selected.filter(starship => starship.id != ship.id)
+        isSelected ? setSelected(f) : setSelected(ps => [...ps, ship])
     }
-    console.log(context)
-
     const StarshipSelection = context.userData.starships.map(item => {
         return(
-            <StarshipItem starship={item} mission={true}></StarshipItem>
+            <StarshipItem starship={item} mission={true} starshipHandler={starshipHandler}></StarshipItem>
         )
     })
-    // const StarshipSelection = context.userData.starships.map(item => {
-    //     return (<div>
-    //         <h1>{item.name}</h1>
-    //         <button onClick={selectHandler}>Select</button>
-    //     </div>
-    //     )
-    // })
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
