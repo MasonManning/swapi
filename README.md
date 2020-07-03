@@ -28,6 +28,9 @@ This react web app has implemented the following functionality:
 * Display bought ships on the Hangar Page
 * Bought ships are stored in the UserContext along with other user data
 * Ability to save which will write the saved UserData to localStorage
+* Ability to send selected starships on missions via the Mission page
+* Use of a Modal to display a list of owned starships to send on Missions
+* Missions take a randomised time to complete
 
 ## How To Play
 * Sign Up
