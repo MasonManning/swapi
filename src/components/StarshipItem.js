@@ -12,6 +12,7 @@ function Starships(props) {
     const handleBuy = (event) => {
         const isBought = userContext.deductCredits(props.starship.cost_in_credits)
         const starship = { ...props.starship }
+        starship.available = true
         starship.id = uuidv4()
         isBought && userContext.addStarship(starship)
     }

@@ -8,6 +8,20 @@ function MissionModal() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleLaunch = () => {
+        console.log(selected)
+        setSelected(ps => ps.map(starship => {
+        starship.available = false
+            return starship
+        }))
+        setTimeout(() => {
+            setSelected(ps => ps.map(starship => {
+            starship.available = true
+                return starship
+            }))
+        }, 10000)
+        setShow(false)
+    }
     const context = useContext(Context)
     const starshipHandler = (ship) => {
         const isSelected = selected.find(starship => starship.id === ship.id)
@@ -15,7 +29,7 @@ function MissionModal() {
         isSelected ? setSelected(f) : setSelected(ps => [...ps, ship])
     }
     const StarshipSelection = context.userData.starships.map(item => {
-        return(
+        return (
             <StarshipItem starship={item} mission={true} starshipHandler={starshipHandler}></StarshipItem>
         )
     })
@@ -37,7 +51,8 @@ function MissionModal() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
           </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleLaunch}>
+                        {/* Upon Launching set the a perperty for the selected ships to inactive in the UserContext.   */}
                         Launch
           </Button>
                 </Modal.Footer>
