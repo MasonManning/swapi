@@ -7,10 +7,6 @@ function MissionModal() {
     const [selected, setSelected] = useState([])
 
     const handleClose = () => setShow(false);
-    const handleLaunch = () => {
-        setShow(false)
-        
-    }
     const handleShow = () => setShow(true);
     const handleLaunch = () => {
         console.log(selected)
