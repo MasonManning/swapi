@@ -34,6 +34,12 @@ function UserContext(props) {
     const removeStarship = (id) => {
         setStarship(starships.filter(s => s.id != id))
     }
+    const updateStarship = (newStarship) => {
+        console.log(starships)
+        console.log("update Starship")
+        setStarship(ps => ps.map(starship => starship.id == newStarship.id ? newStarship : starship))
+        console.log(starships)
+    }
     const load = (save) => {
         setCredits(save.credits)
         setStarship(save.starships)
@@ -43,7 +49,7 @@ function UserContext(props) {
             userData: {captainName: captainName, username: username,
         password: password, credits: credits, starships: starships, id, id }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load, addCredits: addCredits,
-            removeStarship: removeStarship
+            removeStarship: removeStarship, updateStarship: updateStarship
         }}>
             {props.children}
         </Context.Provider>

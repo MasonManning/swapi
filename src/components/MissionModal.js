@@ -6,23 +6,21 @@ function MissionModal() {
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState([])
 
+    const context = useContext(Context)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleLaunch = () => {
-        console.log(selected)
-        setSelected(ps => ps.map(starship => {
-        starship.available = false
-            return starship
-        }))
+        // Set UserContext staarship.available not the MissonModal selected.starship.available
+        selected.forEach(starship => {
+            starship.available = false
+            context.updateStarship(starship)})
         setTimeout(() => {
-            setSelected(ps => ps.map(starship => {
-            starship.available = true
-                return starship
-            }))
+        selected.forEach(starship => {
+            starship.available = true 
+            context.updateStarship(starship)})
         }, 10000)
         setShow(false)
     }
-    const context = useContext(Context)
     const starshipHandler = (ship) => {
         const isSelected = selected.find(starship => starship.id === ship.id)
         const f = selected.filter(starship => starship.id != ship.id)
