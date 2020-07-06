@@ -24,6 +24,7 @@ function Mission() {
                 missionType: "Battlefield",
                 name: sectorName,
                 level: missionLevel,
+                duration: '0:3',
                 color: "Determine from player level",
             })
         }

@@ -2,13 +2,14 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { Context } from '../UserContext'
 import StarshipItem from './StarshipItem'
-function MissionModal() {
+function MissionModal(props) {
     const [show, setShow] = useState(false);
     const [selected, setSelected] = useState([])
 
     const context = useContext(Context)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [minute, second] = props.mission.duration.split(':')
     const handleLaunch = () => {
         // Set UserContext staarship.available not the MissonModal selected.starship.available
         selected.forEach(starship => {
@@ -18,7 +19,8 @@ function MissionModal() {
         selected.forEach(starship => {
             starship.available = true 
             context.updateStarship(starship)})
-        }, 10000)
+        }, toMilliseconds(minute, second))
+        // }, toMilliseconds(props.mission.duration))
         setShow(false)
     }
     const starshipHandler = (ship) => {
@@ -69,5 +71,8 @@ function MissionModal() {
             </Modal>
         </>
     );
+}
+function toMilliseconds(minute, second){
+    return (((minute * 60) + second)*1000)
 }
 export default MissionModal
