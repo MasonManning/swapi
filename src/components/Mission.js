@@ -12,14 +12,15 @@ function Mission() {
     return (
         <div>
             <h1>Select A Mission</h1>
-            
-            {Mission.map((item, index) =>  <BattlefieldItem key={index} item={item}/>            )}
+
+            {Mission.map((item, index) => <BattlefieldItem key={index} item={item} />)}
         </div>
     )
     function generateMissions() {
         for (let i = 0; i < NUMBER_OF_MISSIONS; i++) {
-            const missionLevel = randomNumber(LOWER_LEVEL, UPPER_LEVEL) 
+            const missionLevel = randomNumber(LOWER_LEVEL, UPPER_LEVEL)
             let sectorName = genSectorName(5)
+            generateDuration(missionLevel)
             Mission.push({
                 missionType: "Battlefield",
                 name: sectorName,
@@ -31,6 +32,15 @@ function Mission() {
         console.log(Mission)
     }
 }
+function generateDuration(missionLevel, min, max) {
+    let d = missionLevel * 10 * (randomNumber(missionLevel, missionLevel))
+    let sec = d % 60
+    let minute = Math.floor(d / 60)
+    console.log("sec: " + sec + " minute : " + minute)
+    d = minute + ":" + sec
+    console.log(d)
+
+}
 
 const randomNumber = (low, high) => {
     const min = Math.ceil(low)
@@ -38,9 +48,9 @@ const randomNumber = (low, high) => {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 const genSectorName = (len) => {
-    let sectorName = 'Sector-' 
-    for(let i = 0; i<len; i++){
-        sectorName += Math.floor(Math.random()*10)
+    let sectorName = 'Sector-'
+    for (let i = 0; i < len; i++) {
+        sectorName += Math.floor(Math.random() * 10)
     }
     return sectorName
 }
