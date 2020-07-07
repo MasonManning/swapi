@@ -20,12 +20,11 @@ function Mission() {
         for (let i = 0; i < NUMBER_OF_MISSIONS; i++) {
             const missionLevel = randomNumber(LOWER_LEVEL, UPPER_LEVEL)
             let sectorName = genSectorName(5)
-            generateDuration(missionLevel)
             Mission.push({
                 missionType: "Battlefield",
                 name: sectorName,
                 level: missionLevel,
-                duration: '0:3',
+                duration: generateDuration(missionLevel),
                 color: "Determine from player level",
             })
         }
@@ -39,6 +38,7 @@ function generateDuration(missionLevel, min, max) {
     console.log("sec: " + sec + " minute : " + minute)
     d = minute + ":" + sec
     console.log(d)
+    return d
 
 }
 
