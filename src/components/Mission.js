@@ -25,21 +25,25 @@ function Mission() {
                 name: sectorName,
                 level: missionLevel,
                 duration: generateDuration(missionLevel),
+                credits: generateCredits(missionLevel), 
                 color: "Determine from player level",
             })
         }
         console.log(Mission)
     }
 }
-function generateDuration(missionLevel, min, max) {
-    let d = missionLevel * 10 * (randomNumber(missionLevel, missionLevel))
+function generateDuration(missionLevel) {
+    let d = missionLevel * 10 * (randomNumber(missionLevel, missionLevel+5))
     let sec = d % 60
     let minute = Math.floor(d / 60)
     console.log("sec: " + sec + " minute : " + minute)
     d = minute + ":" + sec
     console.log(d)
     return d
-
+}
+function generateCredits(missionLevel){
+    const credits = missionLevel * 500 * (randomNumber(missionLevel, missionLevel+5))
+    return credits
 }
 
 const randomNumber = (low, high) => {

@@ -7,6 +7,7 @@ function BattlefieldItem(props) {
 
             <h1>Mission Type: {props.item.missionType}</h1>
             <h2>Name: {props.item.name}</h2>
+            <h2>Credits: {props.item.credits}</h2>
             <h2>Level: {props.item.level}</h2>
             <h2>Duration: {props.item.duration}</h2>
             <h2>Difficulty: {props.item.color}</h2>
