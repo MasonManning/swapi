@@ -12,11 +12,17 @@ class Login extends React.Component {
     }
     handleSubmit = (event) => {
         const login = Db.getInstance().Login(this.state.username, this.state.password)
-        !login.error && this.props.updateAuth(true)
-        !login.error && this.context.initSignUp({
-            username: this.state.username, password: this.state.password,
-            id: login.userData.id, captainName: login.userData.captainName
-        })
+        if (!login.error) {
+            this.props.updateAuth(true)
+            const save = Db.getInstance().getSaved(login.userData.id)
+            this.context.login({
+                username: this.state.username, password: this.state.password,
+                id: login.userData.id, captainName: login.userData.captainName,
+                save: save
+            })
+        }
+        // GetSaved
+
         event.preventDefault()
         this.props.history.push("/")
     }

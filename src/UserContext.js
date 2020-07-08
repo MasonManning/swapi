@@ -9,6 +9,7 @@ function UserContext(props) {
     const [password, setPassword] = useState("")
     const [starships, setStarship] = useState([])
     const [id, setId] = useState("")
+    const [level, setLevel] = useState("")
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
@@ -18,6 +19,21 @@ function UserContext(props) {
         setCredits(500000)
         // setCredits(userData.credits)
     }
+    const login = (userData) => {
+        setUsername(userData.username)
+        setPassword(userData.password)
+        setCaptainName(userData.captainName)
+        setId(userData.id)
+        if (userData.save.length > 0) {
+            const save = userData.save
+            console.log("SAVE>>>>>>>")
+            console.log(save)
+            setCredits(save[save.length -1].credits)
+            setStarship(save[save.length -1].starships)
+        } else {
+            console.log("Save was NULL")
+        }
+    }
 
     const deductCredits = (newCredits) => {
         const credLeft = credits - newCredits
@@ -26,7 +42,7 @@ function UserContext(props) {
     }
     const addCredits = (c) => {
         setCredits(((credits + parseInt(c))))
-        return true 
+        return true
     }
     const addStarship = (newStarship) => {
         setStarship([...starships, newStarship])
@@ -46,10 +62,12 @@ function UserContext(props) {
     }
     return (
         <Context.Provider value={{
-            userData: {captainName: captainName, username: username,
-        password: password, credits: credits, starships: starships, id, id }, initSignUp: initSignUp,
+            userData: {
+                captainName: captainName, username: username,
+                password: password, credits: credits, starships: starships, id, id
+            }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load, addCredits: addCredits,
-            removeStarship: removeStarship, updateStarship: updateStarship
+            removeStarship: removeStarship, updateStarship: updateStarship, login: login,
         }}>
             {props.children}
         </Context.Provider>
