@@ -28,10 +28,12 @@ function UserContext(props) {
             const save = userData.save
             console.log("SAVE>>>>>>>")
             console.log(save)
-            setCredits(save[save.length -1].credits)
-            setStarship(save[save.length -1].starships)
+            setCredits(save[save.length - 1].credits)
+            setStarship(save[save.length - 1].starships)
         } else {
             console.log("Save was NULL")
+            setCredits(500000)
+            setStarship([])
         }
     }
 
