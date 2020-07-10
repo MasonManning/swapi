@@ -93,7 +93,8 @@ function createSavedItem(userData) {
     return ({
         saveId: uuidv4(),
         credits: userData.credits,
-        starships: userData.starships
+        starships: userData.starships,
+        level: userData.level
     })
 }
 export default StorageManagement

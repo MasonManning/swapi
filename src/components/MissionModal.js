@@ -11,17 +11,39 @@ function MissionModal(props) {
     const handleShow = () => setShow(true);
     const [minute, second] = props.mission.duration.split(':')
     const handleLaunch = () => {
-        // Set UserContext staarship.available not the MissonModal selected.starship.available
         selected.forEach(starship => {
             starship.available = false
-            context.updateStarship(starship)})
+            context.updateStarship(starship)
+        })
         setTimeout(() => {
-        selected.forEach(starship => {
-            starship.available = true 
-            context.updateStarship(starship)})
+            let level = context.userData.level
+            const missionLevel = props.mission.level
+            let sucRate = Math.random() * 10 + 1
+            // Update below to improve odds depending on the starships sent.
+            if (level < missionLevel) {
+                sucRate <= 2 ? missionSuccess() : missionFailed()
+            } else if (level == missionLevel) {
+                sucRate <= 3.5 ? missionSuccess() : missionFailed()
+            } else if (level > missionLevel) {
+                sucRate <= 5 ? missionSuccess() : missionFailed()
+            }
         }, toMilliseconds(minute, second))
-        // }, toMilliseconds(props.mission.duration))
         setShow(false)
+    }
+    const missionSuccess = () => {
+        selected.forEach(starship => {
+            starship.available = true
+            context.updateStarship(starship)
+        })
+    }
+    function missionFailed() {
+        selected.forEach(starship => {
+            starship.available = true
+            context.updateStarship(starship)
+            if (Math.random() * 10 + 1) {
+                context.removeStarship(starship.id)
+            }
+        })
     }
     const starshipHandler = (ship) => {
         const isSelected = selected.find(starship => starship.id === ship.id)
@@ -72,7 +94,7 @@ function MissionModal(props) {
         </>
     );
 }
-function toMilliseconds(minute, second){
-    return (((minute * 60) + second)*1000)
+function toMilliseconds(minute, second) {
+    return (((minute * 60) + second) * 1000)
 }
 export default MissionModal

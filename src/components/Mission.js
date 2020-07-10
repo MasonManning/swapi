@@ -24,7 +24,8 @@ function Mission() {
                 missionType: "Battlefield",
                 name: sectorName,
                 level: missionLevel,
-                duration: generateDuration(missionLevel),
+                // duration: generateDuration(missionLevel),
+                duration: "0:03",
                 credits: generateCredits(missionLevel), 
                 color: "Determine from player level",
             })

@@ -25,6 +25,7 @@ const Save = () => {
 
                             <div onClick={(e) => {
                                 const hasSaved = Db.getInstance().newSave(consumer.userData)
+                                console.log(consumer.userData)
                                 console.log("hasValue")
                                 hasSaved && savedList.push(<StateItem data={hasSaved} key={hasSaved.saveId} index={savedList.length+1} />)
                                 console.log(savedList)
