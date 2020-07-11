@@ -10,6 +10,7 @@ function UserContext(props) {
     const [starships, setStarship] = useState([])
     const [id, setId] = useState("")
     const [level, setLevel] = useState("")
+    const [exp, setExp] = useState(0)
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
@@ -19,6 +20,7 @@ function UserContext(props) {
         setCredits(500000)
         setStarship([])
         setLevel(1)
+        setExp(0)
         // setCredits(userData.credits)
     }
     const login = (userData) => {
@@ -32,11 +34,13 @@ function UserContext(props) {
             setCredits(save[save.length - 1].credits)
             setStarship(save[save.length - 1].starships)
             setLevel(save[save.length - 1].level)
+            setLevel(save[save.length - 1].exp)
             // Set User Level
         } else {
             setCredits(500000)
             setStarship([])
             setLevel(1)
+            setExp(0)
             // Clear UserLevel to 1
         }
     }
@@ -63,11 +67,16 @@ function UserContext(props) {
         setCredits(save.credits)
         setStarship(save.starships)
     }
+    const addExp = (expInc) => {
+        console.log(expInc)
+        // (level * level * 10) < (exp + expInc) ? setExp()
+    }
     return (
         <Context.Provider value={{
             userData: {
                 captainName: captainName, username: username,
-                password: password, credits: credits, starships: starships, id: id, level: level
+                password: password, credits: credits, starships: starships, 
+                id: id, level: level, exp: exp
             }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load, addCredits: addCredits,
             removeStarship: removeStarship, updateStarship: updateStarship, login: login,
