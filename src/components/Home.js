@@ -21,7 +21,11 @@ class Home extends Component {
     //     event.preventDefault()
     // }
     render() {
-        return(<h1>Home</h1>)
+        return(
+            <div>
+        <h1>Home</h1>
+            </div>
+        )
         // return (
             // <CaptainContext.Provider value={"Test Captain Context"}>
             //     <form onSubmit={this.handleCptSubmit}>

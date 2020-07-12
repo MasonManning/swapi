@@ -9,7 +9,7 @@ function UserContext(props) {
     const [password, setPassword] = useState("")
     const [starships, setStarship] = useState([])
     const [id, setId] = useState("")
-    const [level, setLevel] = useState("")
+    const [level, setLevel] = useState()
     const [exp, setExp] = useState(0)
 
     const initSignUp = (userData) => {
@@ -34,7 +34,11 @@ function UserContext(props) {
             setCredits(save[save.length - 1].credits)
             setStarship(save[save.length - 1].starships)
             setLevel(save[save.length - 1].level)
-            setLevel(save[save.length - 1].exp)
+            console.log("actual level in UserContext: " + level)
+            console.log("Login Save Objec: ")
+            console.log(save[save.length - 1].level)
+            console.log("LOgin level : " + save[save.length - 1].level)
+            setExp(save[save.length - 1].exp)
             // Set User Level
         } else {
             setCredits(500000)
@@ -68,18 +72,25 @@ function UserContext(props) {
         setStarship(save.starships)
     }
     const addExp = (expInc) => {
+        console.log("Add EXP ")
         console.log(expInc)
-        // (level * level * 10) < (exp + expInc) ? setExp()
+        console.log("Exp Before : " + exp)
+        // (level * level * 10) < (exp + expInc) ? setExp(ps => ps+exp) : levelUp()
+        console.log("Exp After : " + exp)
+    }
+    function levelUp(){
+        console.log("Level Up")
     }
     return (
         <Context.Provider value={{
             userData: {
                 captainName: captainName, username: username,
                 password: password, credits: credits, starships: starships, 
-                id: id, level: level, exp: exp
+                id: id, level: level, exp: exp,
             }, initSignUp: initSignUp,
-            deductCredits: deductCredits, addStarship: addStarship, load: load, addCredits: addCredits,
-            removeStarship: removeStarship, updateStarship: updateStarship, login: login,
+            deductCredits: deductCredits, addStarship: addStarship, load: load,
+            addCredits: addCredits, removeStarship: removeStarship, 
+            updateStarship: updateStarship, login: login, addExp: addExp
         }}>
             {props.children}
         </Context.Provider>

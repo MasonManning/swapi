@@ -27,6 +27,7 @@ function Mission() {
                 // duration: generateDuration(missionLevel),
                 duration: "0:03",
                 credits: generateCredits(missionLevel), 
+                exp: 5,
                 color: "Determine from player level",
             })
         }

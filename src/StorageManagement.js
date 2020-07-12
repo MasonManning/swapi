@@ -45,7 +45,10 @@ class StorageManagement {
         if (userData == null) {
             return false
         }
+        console.log("newSave UserData: ")
+        console.log(userData)
         let users = JSON.parse(localStorage.getItem("Users"))
+        // TODO:: Replace filter with find
         const user = users.filter(u => u.id == userData.id)[0]
         const newSave = createSavedItem(userData)
         if (newSave) {
@@ -53,6 +56,7 @@ class StorageManagement {
             user.saved = [...user.saved, newSave]
             let susers = users.map(u => u.id === userData.id ? user : u)
             
+            console.log("Sursers")
             console.log(susers)
 
             localStorage.setItem("Users", JSON.stringify(susers))
@@ -64,7 +68,9 @@ class StorageManagement {
 
         let users = JSON.parse(localStorage.getItem("Users"))
         let doesMatch = users.find((user) => user.name === username && user.password === password)
+        console.log("users")
         console.log(users)
+        console.log("DoesMatch")
         console.log(doesMatch)
         if (users != null && doesMatch) {
             return { error: false, message: "HTTP 200 Login Successfull", userData: doesMatch}
@@ -90,6 +96,7 @@ class StorageManagement {
 
 }
 function createSavedItem(userData) {
+    console.log(userData.level)
     return ({
         saveId: uuidv4(),
         credits: userData.credits,

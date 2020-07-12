@@ -15,10 +15,16 @@ function MissionModal(props) {
             starship.available = false
             context.updateStarship(starship)
         })
+        console.log(minute)
+        console.log(second)
+        console.log(toMilliseconds(minute, second))
         setTimeout(() => {
             let level = context.userData.level
             const missionLevel = props.mission.level
             let sucRate = Math.random() * 10 + 1
+            console.log(level)
+            console.log(missionLevel)
+            console.log(sucRate)
             // Update below to improve odds depending on the starships sent.
             if (level < missionLevel) {
                 sucRate <= 2 ? missionSuccess() : missionFailed()
@@ -31,12 +37,15 @@ function MissionModal(props) {
         setShow(false)
     }
     const missionSuccess = () => {
+        console.log("Mission Success")
         selected.forEach(starship => {
             starship.available = true
             context.updateStarship(starship)
         })
+        context.addExp(props.mission.exp)
     }
     function missionFailed() {
+        console.log("Mission Fail")
         selected.forEach(starship => {
             starship.available = true
             context.updateStarship(starship)
@@ -45,10 +54,15 @@ function MissionModal(props) {
             }
         })
     }
+    // const starshipHandler = (ship) => {
+    //     const isSelected = selected.find(starship => starship.id === ship.id)
+    //     const f = selected.filter(starship => starship.id != ship.id)
+    //     isSelected ? setSelected(f) : setSelected(ps => [...ps, ship])
+    // }
     const starshipHandler = (ship) => {
-        const isSelected = selected.find(starship => starship.id === ship.id)
-        const f = selected.filter(starship => starship.id != ship.id)
-        isSelected ? setSelected(f) : setSelected(ps => [...ps, ship])
+        setSelected(ps => {
+            return ps.find(starship => starship.id == ship.id) ? [...ps.filter(starship => starship.id != ship.id)] : [...ps, ship]
+        })
     }
     const StarshipSelection = context.userData.starships.map(item => {
         return (
