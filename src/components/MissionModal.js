@@ -27,7 +27,7 @@ function MissionModal(props) {
             console.log(sucRate)
             // Update below to improve odds depending on the starships sent.
             if (level < missionLevel) {
-                sucRate <= 2 ? missionSuccess() : missionFailed()
+                sucRate <= 10 ? missionSuccess() : missionFailed()
             } else if (level == missionLevel) {
                 sucRate <= 3.5 ? missionSuccess() : missionFailed()
             } else if (level > missionLevel) {

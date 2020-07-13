@@ -53,6 +53,10 @@ class StorageManagement {
         const newSave = createSavedItem(userData)
         if (newSave) {
 
+            console.log("user: ")
+            console.log(user)
+            console.log("user saved: ")
+            console.log(user.saved)
             user.saved = [...user.saved, newSave]
             let susers = users.map(u => u.id === userData.id ? user : u)
             
@@ -60,6 +64,8 @@ class StorageManagement {
             console.log(susers)
 
             localStorage.setItem("Users", JSON.stringify(susers))
+            console.log("**************** newSave *************")
+            console.log(newSave)
             return newSave 
         }
         return false
@@ -101,7 +107,8 @@ function createSavedItem(userData) {
         saveId: uuidv4(),
         credits: userData.credits,
         starships: userData.starships,
-        level: userData.level
+        level: userData.level,
+        exp: userData.exp
     })
 }
 export default StorageManagement
