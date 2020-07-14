@@ -74,6 +74,12 @@ function UserContext(props) {
     const addExp = (expInc) => {
         (level * level * 10) > (exp + expInc) ? setExp(ps => (ps+expInc)) : levelUp()
     }
+    const getExpForLevel = () => {
+        return (level * level * 10)
+    }
+    const getPerNextLvl = () => {
+        return exp / getExpForLevel() * 100
+    }
     function levelUp(){
         setExp(0)
         setLevel(ps => (ps+1))
@@ -87,7 +93,8 @@ function UserContext(props) {
             }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load,
             addCredits: addCredits, removeStarship: removeStarship, 
-            updateStarship: updateStarship, login: login, addExp: addExp
+            updateStarship: updateStarship, login: login, addExp: addExp,
+            getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl,
         }}>
             {props.children}
         </Context.Provider>

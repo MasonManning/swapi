@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import BattlefieldItem from './BattlefieldItem'
+import {Context} from '../UserContext'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 function Mission() {
     const MAX_MISSION_NUMBER = 4
@@ -8,11 +10,12 @@ function Mission() {
     const LOWER_LEVEL = 1
     const UPPER_LEVEL = 6
     let Mission = []
+    const context = useContext(Context)
     generateMissions()
     return (
         <div>
             <h1>Select A Mission</h1>
-
+            <ProgressBar now={context.getPerNextLvl()}/>
             {Mission.map((item, index) => <BattlefieldItem key={index} item={item} />)}
         </div>
     )
@@ -27,7 +30,7 @@ function Mission() {
                 // duration: generateDuration(missionLevel),
                 duration: "0:03",
                 credits: generateCredits(missionLevel), 
-                exp: 5,
+                exp: generateExp(missionLevel),
                 color: "Determine from player level",
             })
         }
@@ -42,6 +45,10 @@ function generateDuration(missionLevel) {
     d = minute + ":" + sec
     console.log(d)
     return d
+}
+function generateExp(missionLevel){
+    // TODO:: Add some randomness to the EXP generation process
+    return missionLevel * missionLevel
 }
 function generateCredits(missionLevel){
     const credits = missionLevel * 500 * (randomNumber(missionLevel, missionLevel+5))
