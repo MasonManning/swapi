@@ -9,9 +9,10 @@ function BattlefieldItem(props) {
             <h2>Name: {props.item.name}</h2>
             <h2>Credits: {props.item.credits}</h2>
             <h2>Level: {props.item.level}</h2>
+            <h2>Exp: {props.item.exp}</h2>
             <h2>Duration: {props.item.duration}</h2>
             <h2>Difficulty: {props.item.color}</h2>
-            <MissionModal mission={props.item}/>
+            <MissionModal mission={props.item} />
         </div>)
 }
 
