@@ -15,7 +15,7 @@ function Mission() {
     return (
         <div>
             <h1>Select A Mission</h1>
-            <ProgressBar now={context.getPerNextLvl()}/>
+            <ProgressBar now={context.getPerNextLvl()} label={`${context.getPerNextLvl()}%`}/>
             {Mission.map((item, index) => <BattlefieldItem key={index} item={item} />)}
         </div>
     )
