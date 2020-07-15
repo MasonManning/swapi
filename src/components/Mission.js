@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import BattlefieldItem from './BattlefieldItem'
 import {Context} from '../UserContext'
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import ExpProgress from './ExpProgress'
 
 function Mission() {
     const MAX_MISSION_NUMBER = 4
@@ -15,7 +15,7 @@ function Mission() {
     return (
         <div>
             <h1>Select A Mission</h1>
-            <ProgressBar now={context.getPerNextLvl()} label={`${context.getPerNextLvl()}%`}/>
+            <ExpProgress />
             {Mission.map((item, index) => <BattlefieldItem key={index} item={item} />)}
         </div>
     )
