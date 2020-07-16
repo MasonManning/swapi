@@ -43,6 +43,7 @@ function MissionModal(props) {
             context.updateStarship(starship)
         })
         context.addExp(props.mission.exp)
+        context.addCredits(props.mission.credits)
     }
     function missionFailed() {
         console.log("Mission Fail")
