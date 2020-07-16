@@ -51,7 +51,7 @@ function generateExp(missionLevel){
     return missionLevel * missionLevel
 }
 function generateCredits(missionLevel){
-    const credits = missionLevel * 500 * (randomNumber(missionLevel, missionLevel+5))
+    const credits = missionLevel * 2000 * (randomNumber(missionLevel, missionLevel+5))
     return credits
 }
 
