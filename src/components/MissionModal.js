@@ -27,11 +27,14 @@ function MissionModal(props) {
             console.log(sucRate)
             // Update below to improve odds depending on the starships sent.
             if (level < missionLevel) {
-                sucRate <= 10 ? missionSuccess() : missionFailed()
+                sucRate <= 0 ? missionSuccess() : missionFailed()
+                // sucRate <= 2 ? missionSuccess() : missionFailed()
             } else if (level == missionLevel) {
-                sucRate <= 3.5 ? missionSuccess() : missionFailed()
+                sucRate <= 0 ? missionSuccess() : missionFailed()
+                // sucRate <= 3.5 ? missionSuccess() : missionFailed()
             } else if (level > missionLevel) {
-                sucRate <= 5 ? missionSuccess() : missionFailed()
+                sucRate <= 0 ? missionSuccess() : missionFailed()
+                // sucRate <= 5 ? missionSuccess() : missionFailed()
             }
         }, toMilliseconds(minute, second))
         setShow(false)
@@ -50,8 +53,16 @@ function MissionModal(props) {
         selected.forEach(starship => {
             starship.available = true
             context.updateStarship(starship)
-            if (Math.random() * 10 + 1) {
+            // Random number from 1 to 10
+            const rand = Math.floor(Math.random() * 10 + 1)
+            // 50% chance of a ship being destroyed
+            if (rand <= 5) {
                 context.removeStarship(starship.id)
+            } else {
+                starship.health - rand * 10 > 0 ?
+                    starship.health = starship.health - rand * 10 :
+                    starship.health = 1
+                context.updateStarship(starship)
             }
         })
     }

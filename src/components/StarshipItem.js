@@ -14,19 +14,20 @@ function Starships(props) {
         const starship = { ...props.starship }
         starship.available = true
         starship.id = uuidv4()
+        starship.health = 100
         isBought && userContext.addStarship(starship)
     }
     const HandleMission = (event) => {
-        if(!props.starship.available){
+        if (!props.starship.available) {
             return;
         }
         setSelected(ps => !ps)
         props.starshipHandler(props.starship)
     }
     // I'm not too sure if this is bad practise? Maybe I should create a MissionItem Component to hold the below code.
-    const mission = <div onClick={HandleMission} style={props.starship.available ? {color: selectStyle} : {color: 'grey'}}>
+    const mission = <div onClick={HandleMission} style={props.starship.available ? { color: selectStyle } : { color: 'grey' }}>
         <h1>Name: {props.starship.name}</h1>
-        <h2>Health: **Not Yet Implemented</h2>
+        <h2>Health: {props.starship.health}</h2>
     </div>
     return (
         <div>
@@ -35,6 +36,7 @@ function Starships(props) {
                     <h1 style={{ color: "#747474" }}>{props.starship.name}</h1>
                     <hr />
                     <h2>Cost In Credits: {props.starship.cost_in_credits}</h2>
+                    <h2>Health: {props.starship.health}</h2>
                     <h2>Essential Crew: {props.starship.crew}</h2>
                     <h2>Passenger Capacity: {props.starship.passengers}</h2>
                     <h2>Length: {props.starship.length}</h2>
