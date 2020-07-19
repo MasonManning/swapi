@@ -21,6 +21,7 @@ import {
   Link,
 } from "react-router-dom";
 import Hangar from './components/Hangar';
+import Shop from './components/Shop';
 class App extends Component {
   constructor() {
     super()
@@ -39,6 +40,8 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Container>
+
         {console.log("Auth is" + this.state.auth)}
         <div className="App container" style={{ backgroundColor: "#CCCCCC" }}>
           <div>
@@ -47,7 +50,8 @@ class App extends Component {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                {this.state.auth && <div><li><Link to='/Starships'>Starships</Link></li><li><Link to='/Hangar'>Hangar</Link></li><li><Link to='/Mission'>Mission</Link></li></div>}
+                {this.state.auth && <div><li><Link to='/Starships'>Starships</Link></li><li><Link to='/Hangar'>Hangar</Link></li><li><Link to='/Mission'>Mission</Link></li>
+                <li><Link to='/Shop'>Shop</Link></li></div>}
                 {!this.state.auth ? <div><li><Link to='/Login'>Login</Link></li><li><Link to='/SignUp'>Sign Up</Link></li></div>: ''}
 
               </ul>
@@ -67,6 +71,9 @@ class App extends Component {
               <PrivateRoute path="/Load" isAuthenticated={this.state.auth}>
                 <Load/>
               </PrivateRoute>
+              <PrivateRoute path="/Shop" isAuthenticated={this.state.auth}>
+                <Shop/>
+              </PrivateRoute>
               <Route path='/SignUp'>
                 <SignUp updateAuth={(val) => { this.setState(({ auth: val })) }} auth={this.state.auth} />
               </Route>
@@ -83,6 +90,7 @@ class App extends Component {
           </div>
           {this.state.auth && <button onClick={this.handleLogout}>Log Out</button>}
         </div>
+        </Container>
       </Router>
     );
   }
