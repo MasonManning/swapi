@@ -102,13 +102,13 @@ class StorageManagement {
 
 }
 function createSavedItem(userData) {
-    console.log(userData.level)
     return ({
         saveId: uuidv4(),
         credits: userData.credits,
         starships: userData.starships,
         level: userData.level,
-        exp: userData.exp
+        exp: userData.exp,
+        maxMissionLvl: userData.maxMissionLvl
     })
 }
 export default StorageManagement

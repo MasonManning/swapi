@@ -11,6 +11,7 @@ function UserContext(props) {
     const [id, setId] = useState("")
     const [level, setLevel] = useState()
     const [exp, setExp] = useState()
+    const [maxMissionLvl, setMaxMissionLvl] = useState(0)
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
@@ -20,7 +21,8 @@ function UserContext(props) {
         setCredits(500000)
         setStarship([])
         setLevel(1)
-        setExp(58)
+        setExp(0)
+        setMaxMissionLvl(0)
         // setCredits(userData.credits)
     }
     const login = (userData) => {
@@ -39,13 +41,15 @@ function UserContext(props) {
             console.log(save[save.length - 1].level)
             console.log("LOgin level : " + save[save.length - 1].level)
             setExp(save[save.length - 1].exp)
+            // ******************** Set  Max Mission Level
             // Set User Level
         } else {
             setCredits(500000)
             setStarship([])
             setLevel(1)
             setExp(0)
-            // Clear UserLevel to 1
+            setMaxMissionLvl(0)
+            console.log("MAX MISSION LEVEL: "+ maxMissionLvl)
         }
     }
 
@@ -72,7 +76,7 @@ function UserContext(props) {
         setStarship(save.starships)
     }
     const addExp = (expInc) => {
-        (level * level * 10) > (exp + expInc) ? setExp(ps => (ps+expInc)) : levelUp()
+        (level * level * 10) > (exp + expInc) ? setExp(ps => (ps + expInc)) : levelUp()
     }
     const getExpForLevel = () => {
         return (level * level * 10)
@@ -80,21 +84,25 @@ function UserContext(props) {
     const getPerNextLvl = () => {
         return exp / getExpForLevel() * 100
     }
-    function levelUp(){
+    function levelUp() {
         setExp(0)
-        setLevel(ps => (ps+1))
+        setLevel(ps => (ps + 1))
+    }
+    const upgradeMaxMissionLevel = () =>{
+        maxMissionLvl < 10 && setMaxMissionLvl(ps => (ps+1)) 
     }
     return (
         <Context.Provider value={{
             userData: {
                 captainName: captainName, username: username,
-                password: password, credits: credits, starships: starships, 
-                id: id, level: level, exp: exp,
+                password: password, credits: credits, starships: starships,
+                id: id, level: level, exp: exp, maxMissionLvl: maxMissionLvl,
             }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load,
-            addCredits: addCredits, removeStarship: removeStarship, 
+            addCredits: addCredits, removeStarship: removeStarship,
             updateStarship: updateStarship, login: login, addExp: addExp,
-            getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl,
+            getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl, 
+            upgradeMaxMissionLevel:upgradeMaxMissionLevel
         }}>
             {props.children}
         </Context.Provider>

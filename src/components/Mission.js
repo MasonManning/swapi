@@ -9,7 +9,7 @@ function Mission() {
     const MIN_MISSION_NUMBER = 1
     const NUMBER_OF_MISSIONS = randomNumber(MIN_MISSION_NUMBER, MAX_MISSION_NUMBER)
     const LOWER_LEVEL = context.userData.level - 5 > 0 ? context.userData.level - 5 : 1
-    const UPPER_LEVEL = context.userData.level + 5
+    const UPPER_LEVEL = context.userData.level + context.userData.maxMissionLvl + 5
     let Mission = []
     generateMissions()
     return (
