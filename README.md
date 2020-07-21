@@ -39,4 +39,6 @@ This react web app has implemented the following functionality:
 * Select A Mission
 * Select Spaceships To Send On Mission
 * Wait For Mission Timeout to complete
-* Earn Credits From Missions (Not Implemented
+* Earn Credits From Missions 
+* Level Up Captain By Completing Missions
+* Buy Upgrades From Shop
