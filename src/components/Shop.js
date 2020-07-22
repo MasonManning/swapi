@@ -15,10 +15,14 @@ export default () => {
     const handleStarship = () => {
         setIsCapSelected(ps => false)
     }
-    const handleMissionNum = (event)  => {
+    const handleMissionLvl = (event)  => {
         console.log("Mission Num")
         console.log(context.userData.maxMissionLvl)
         context.upgradeMaxMissionLevel()
+    }
+    const handleMissionNum = () => {
+        console.log(context.userData.missionNum)
+        context.upgradeMissionNum()
     }
     return (
         <div>
@@ -29,13 +33,13 @@ export default () => {
             </Row>
             <div style={isCapSelected ? show : hide}>
                 <Row >
-                    <Col style={style}><p>Mission Lvl Upgrade</p></Col>
-                    <Col style={style}><p>levels</p></Col>
+                    <Col style={style} onClick={handleMissionLvl} ><p>Mission Lvl Upgrade</p></Col>
+                    <Col style={style}><p>Level: {context.userData.maxMissionLvl}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
                     <Col style={style} onClick={handleMissionNum}><p>Mission # Upgrade</p></Col>
-                    <Col style={style}><p>Level: {context.userData.maxMissionLvl}</p></Col>
+                    <Col style={style}><p>Level: {context.userData.missionNum}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >

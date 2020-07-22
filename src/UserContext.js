@@ -12,6 +12,7 @@ function UserContext(props) {
     const [level, setLevel] = useState()
     const [exp, setExp] = useState()
     const [maxMissionLvl, setMaxMissionLvl] = useState(0)
+    const [missionNum, setMissionNum] = useState(0)
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
@@ -41,6 +42,8 @@ function UserContext(props) {
             console.log(save[save.length - 1].level)
             console.log("LOgin level : " + save[save.length - 1].level)
             setExp(save[save.length - 1].exp)
+            setMaxMissionLvl(save[save.length - 1].maxMissionLvl)
+            setMissionNum(save[save.length - 1].missionNum)
             // ******************** Set  Max Mission Level
             // Set User Level
         } else {
@@ -91,18 +94,22 @@ function UserContext(props) {
     const upgradeMaxMissionLevel = () =>{
         maxMissionLvl < 10 && setMaxMissionLvl(ps => (ps+1)) 
     }
+    const upgradeMissionNum = () => {
+        missionNum < 10 && setMissionNum(ps => (ps + 1))
+    }
     return (
         <Context.Provider value={{
             userData: {
                 captainName: captainName, username: username,
                 password: password, credits: credits, starships: starships,
                 id: id, level: level, exp: exp, maxMissionLvl: maxMissionLvl,
+                missionNum: missionNum
             }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load,
             addCredits: addCredits, removeStarship: removeStarship,
             updateStarship: updateStarship, login: login, addExp: addExp,
             getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl, 
-            upgradeMaxMissionLevel:upgradeMaxMissionLevel
+            upgradeMaxMissionLevel:upgradeMaxMissionLevel, upgradeMissionNum 
         }}>
             {props.children}
         </Context.Provider>

@@ -108,7 +108,8 @@ function createSavedItem(userData) {
         starships: userData.starships,
         level: userData.level,
         exp: userData.exp,
-        maxMissionLvl: userData.maxMissionLvl
+        maxMissionLvl: userData.maxMissionLvl,
+        missionNum: userData.missionNum
     })
 }
 export default StorageManagement
