@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {Context} from '../UserContext'
+import { Context } from '../UserContext'
 
 export default () => {
     const style = { borderStyle: "solid" }
@@ -15,7 +15,7 @@ export default () => {
     const handleStarship = () => {
         setIsCapSelected(ps => false)
     }
-    const handleMissionLvl = (event)  => {
+    const handleMissionLvl = (event) => {
         console.log("Mission Num")
         console.log(context.userData.maxMissionLvl)
         context.upgradeMaxMissionLevel()
@@ -23,6 +23,12 @@ export default () => {
     const handleMissionNum = () => {
         console.log(context.userData.missionNum)
         context.upgradeMissionNum()
+    }
+    const handleCreditsUpg = () => {
+        context.upgradeCredits()
+    }
+    const handleExpUpg = () => {
+        context.upgradeExp()
     }
     return (
         <div>
@@ -43,13 +49,13 @@ export default () => {
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style}><p>Credits Upgrade</p></Col>
-                    <Col style={style}><p>levels</p></Col>
+                    <Col style={style} onClick={handleCreditsUpg}><p>Credits Upgrade</p></Col>
+                    <Col style={style}><p>Level: {context.userData.creditsUpg}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style}><p>Exp Upgrade</p></Col>
-                    <Col style={style}><p>levels</p></Col>
+                    <Col style={style} onClick={handleExpUpg}><p>Exp Upgrade</p></Col>
+                    <Col style={style} ><p>Level: {context.userData.expUpg}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
             </div>

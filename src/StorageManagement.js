@@ -109,7 +109,9 @@ function createSavedItem(userData) {
         level: userData.level,
         exp: userData.exp,
         maxMissionLvl: userData.maxMissionLvl,
-        missionNum: userData.missionNum
+        missionNum: userData.missionNum,
+        creditsUpg: userData.creditsUpg,
+        expUpg: userData.expUpg
     })
 }
 export default StorageManagement

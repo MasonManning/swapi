@@ -13,6 +13,8 @@ function UserContext(props) {
     const [exp, setExp] = useState()
     const [maxMissionLvl, setMaxMissionLvl] = useState(0)
     const [missionNum, setMissionNum] = useState(0)
+    const [creditsUpg, setCreditsUpg] = useState(0)
+    const [expUpg, setExpUpg] = useState(0)
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
@@ -23,7 +25,11 @@ function UserContext(props) {
         setStarship([])
         setLevel(1)
         setExp(0)
+        // Initialize Upgrades
         setMaxMissionLvl(0)
+        setMissionNum(0)
+        setCreditsUpg(0)
+        setExpUpg(0)
         // setCredits(userData.credits)
     }
     const login = (userData) => {
@@ -44,6 +50,8 @@ function UserContext(props) {
             setExp(save[save.length - 1].exp)
             setMaxMissionLvl(save[save.length - 1].maxMissionLvl)
             setMissionNum(save[save.length - 1].missionNum)
+            setCreditsUpg(save[save.length - 1].creditsUpg)
+            setExpUpg(save[save.length - 1].expUpg)
             // ******************** Set  Max Mission Level
             // Set User Level
         } else {
@@ -51,8 +59,12 @@ function UserContext(props) {
             setStarship([])
             setLevel(1)
             setExp(0)
+            // Initialize Upgrades
             setMaxMissionLvl(0)
-            console.log("MAX MISSION LEVEL: "+ maxMissionLvl)
+            setMissionNum(0)
+            setCreditsUpg(0)
+            setExpUpg(0)
+            console.log("MAX MISSION LEVEL: " + maxMissionLvl)
         }
     }
 
@@ -91,11 +103,17 @@ function UserContext(props) {
         setExp(0)
         setLevel(ps => (ps + 1))
     }
-    const upgradeMaxMissionLevel = () =>{
-        maxMissionLvl < 10 && setMaxMissionLvl(ps => (ps+1)) 
+    const upgradeMaxMissionLevel = () => {
+        maxMissionLvl < 10 && setMaxMissionLvl(ps => ps + 1)
     }
     const upgradeMissionNum = () => {
         missionNum < 10 && setMissionNum(ps => (ps + 1))
+    }
+    const upgradeCredits = () => {
+        creditsUpg < 10 && setCreditsUpg(ps => ps + 1)
+    }
+    const upgradeExp = () => {
+        expUpg < 10 && setExpUpg(ps => ps + 1)
     }
     return (
         <Context.Provider value={{
@@ -103,13 +121,14 @@ function UserContext(props) {
                 captainName: captainName, username: username,
                 password: password, credits: credits, starships: starships,
                 id: id, level: level, exp: exp, maxMissionLvl: maxMissionLvl,
-                missionNum: missionNum
+                missionNum: missionNum, creditsUpg: creditsUpg, expUpg: expUpg
             }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load,
             addCredits: addCredits, removeStarship: removeStarship,
             updateStarship: updateStarship, login: login, addExp: addExp,
-            getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl, 
-            upgradeMaxMissionLevel:upgradeMaxMissionLevel, upgradeMissionNum 
+            getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl,
+            upgradeMaxMissionLevel: upgradeMaxMissionLevel, upgradeMissionNum,
+            upgradeCredits: upgradeCredits, upgradeExp: upgradeExp
         }}>
             {props.children}
         </Context.Provider>
