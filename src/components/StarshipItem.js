@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import PropTypes from 'prop-types'
 import { Context as UserContext } from '../UserContext'
 import { v4 as uuidv4 } from 'uuid'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 function Starships(props) {
     const [selected, setSelected] = useState(false)
     const color = props.index % 2 == 0 ? "#DDDDDD" : "#D4D5DB"
@@ -28,6 +29,7 @@ function Starships(props) {
     const mission = <div onClick={HandleMission} style={props.starship.available ? { color: selectStyle } : { color: 'grey' }}>
         <h1>Name: {props.starship.name}</h1>
         <h2>Health: {props.starship.health}</h2>
+        <ProgressBar now={props.starship.health} label={props.starship.health}/>
     </div>
     return (
         <div>

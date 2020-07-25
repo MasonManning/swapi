@@ -11,6 +11,7 @@ function UserContext(props) {
     const [id, setId] = useState("")
     const [level, setLevel] = useState()
     const [exp, setExp] = useState()
+    // User Upgrades
     const [maxMissionLvl, setMaxMissionLvl] = useState(0)
     const [missionNum, setMissionNum] = useState(0)
     const [creditsUpg, setCreditsUpg] = useState(0)
