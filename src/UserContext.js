@@ -40,21 +40,14 @@ function UserContext(props) {
         setId(userData.id)
         if (userData.save.length > 0) {
             const save = userData.save
-            console.log(save)
             setCredits(save[save.length - 1].credits)
             setStarship(save[save.length - 1].starships)
             setLevel(save[save.length - 1].level)
-            console.log("actual level in UserContext: " + level)
-            console.log("Login Save Objec: ")
-            console.log(save[save.length - 1].level)
-            console.log("LOgin level : " + save[save.length - 1].level)
             setExp(save[save.length - 1].exp)
             setMaxMissionLvl(save[save.length - 1].maxMissionLvl)
             setMissionNum(save[save.length - 1].missionNum)
             setCreditsUpg(save[save.length - 1].creditsUpg)
             setExpUpg(save[save.length - 1].expUpg)
-            // ******************** Set  Max Mission Level
-            // Set User Level
         } else {
             setCredits(500000)
             setStarship([])
@@ -65,7 +58,6 @@ function UserContext(props) {
             setMissionNum(0)
             setCreditsUpg(0)
             setExpUpg(0)
-            console.log("MAX MISSION LEVEL: " + maxMissionLvl)
         }
     }
 

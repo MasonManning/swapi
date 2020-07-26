@@ -22,7 +22,6 @@ function Load(props) {
                     return(
                         <div>
                             {savedList && savedList.map((i,index) => <div onClick={(event)=>{
-                                console.log("clicked" + i.credits)
                                 consumer.load(i)
                                 }}><StateItem data={i} key={i.saveId} index={index}/></div> )}
                         </div>

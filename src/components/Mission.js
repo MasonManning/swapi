@@ -34,16 +34,13 @@ function Mission() {
                 color: "Determine from player level",
             })
         }
-        console.log(Mission)
     }
 }
 function generateDuration(missionLevel) {
     let d = missionLevel * 10 * (randomNumber(missionLevel, missionLevel+5))
     let sec = d % 60
     let minute = Math.floor(d / 60)
-    console.log("sec: " + sec + " minute : " + minute)
     d = minute + ":" + sec
-    console.log(d)
     return d
 }
 function generateExp(missionLevel){

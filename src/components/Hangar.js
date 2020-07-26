@@ -20,7 +20,6 @@ const Hangar = (props) => {
                                     return <Col md={4} key={index}> <StarshipItem starship={starship} /><button onClick={(event) => {
                                         v.addCredits(starship.cost_in_credits)
                                         v.removeStarship(starship.id)
-                                        console.log(starship)
                                     }}>Sell</button></Col>
                                 })}
                             </Row>
