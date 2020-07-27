@@ -26,7 +26,7 @@ const Save = () => {
                                 const hasSaved = Db.getInstance().newSave(consumer.userData)
                                 hasSaved && savedList.push(<StateItem data={hasSaved} key={hasSaved.saveId} index={savedList.length+1} />)
 
-                            }} style={{ backgroundColor: "red", height: "150px" }}><h1>NEW SAVE</h1></div>
+                            }} style={{ height: "150px" }}><h1>NEW SAVE</h1></div>
                             <h1>Save Comp: {consumer.userData.username}</h1>
                         </div>
                     )
