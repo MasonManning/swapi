@@ -37,6 +37,7 @@ This react web app has implemented the following functionality:
 * Buy A Spaceship
 * Battle or Trade 
 * Select A Mission
+* Dynamically Generate Mission Duration, Exp, Level and Credits
 * Select Spaceships To Send On Mission
 * Wait For Mission Timeout to complete
 * Earn Credits From Missions 
