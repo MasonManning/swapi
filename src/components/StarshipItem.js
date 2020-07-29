@@ -16,6 +16,8 @@ function Starships(props) {
         starship.available = true
         starship.id = uuidv4()
         starship.health = 100
+        // TODO:: Change armour depending on what starship is bought. **************************************************************
+        starship.armour = 0
         isBought && userContext.addStarship(starship)
     }
     const HandleMission = (event) => {

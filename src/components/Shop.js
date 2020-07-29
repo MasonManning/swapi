@@ -30,6 +30,9 @@ export default () => {
     const handleExpUpg = () => {
         context.upgradeExp()
     }
+    const handleArmourUpg = () => {
+        context.upgradeArmour()
+    }
     return (
         <div>
             <h1>Welcome Traveler</h1>
@@ -66,8 +69,8 @@ export default () => {
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style}><p>Armour Upgrade</p></Col>
-                    <Col style={style}><p>levels</p></Col>
+                    <Col style={style} onClick={handleArmourUpg}><p>Armour Upgrade</p></Col>
+                    <Col style={style}><p>Level: {context.userData.armourUpg}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
