@@ -18,6 +18,7 @@ function UserContext(props) {
     const [expUpg, setExpUpg] = useState(0)
     // Starship Upgrades
     const [armourUpg, setArmourUpg] = useState(0)
+    const [healthUpg, setHealthUpg] = useState(0)
 
     const initSignUp = (userData) => {
         setUsername(userData.username)
@@ -34,6 +35,7 @@ function UserContext(props) {
         setCreditsUpg(0)
         setExpUpg(0)
         setArmourUpg(0)
+        setHealthUpg(0)
     }
     const login = (userData) => {
         setUsername(userData.username)
@@ -51,6 +53,7 @@ function UserContext(props) {
             setCreditsUpg(save[save.length - 1].creditsUpg)
             setExpUpg(save[save.length - 1].expUpg)
             setArmourUpg(save[save.length - 1].armourUpg)
+            setHealthUpg(save[save.length - 1].healthUpg)
         } else {
             setCredits(500000)
             setStarship([])
@@ -62,6 +65,7 @@ function UserContext(props) {
             setCreditsUpg(0)
             setExpUpg(0)
             setArmourUpg(0)
+            setHealthUpg(0)
         }
     }
 
@@ -115,6 +119,9 @@ function UserContext(props) {
     const upgradeArmour = () => {
         armourUpg < 10 && setArmourUpg(ps => ps + 1)
     }
+    const upgradeHealth = () => {
+        healthUpg < 10 && setHealthUpg(ps => ps + 1)
+    }
     return (
         <Context.Provider value={{
             userData: {
@@ -122,15 +129,15 @@ function UserContext(props) {
                 password: password, credits: credits, starships: starships,
                 id: id, level: level, exp: exp, maxMissionLvl: maxMissionLvl,
                 missionNum: missionNum, creditsUpg: creditsUpg, expUpg: expUpg,
-                armourUpg: armourUpg
+                armourUpg: armourUpg, healthUpg: healthUpg
             }, initSignUp: initSignUp,
             deductCredits: deductCredits, addStarship: addStarship, load: load,
             addCredits: addCredits, removeStarship: removeStarship,
             updateStarship: updateStarship, login: login, addExp: addExp,
             getExpForLevel: getExpForLevel, getPerNextLvl: getPerNextLvl,
             upgradeMaxMissionLevel: upgradeMaxMissionLevel, upgradeMissionNum,
-            upgradeCredits: upgradeCredits, upgradeExp: upgradeExp, 
-            upgradeArmour: upgradeArmour,
+            upgradeCredits: upgradeCredits, upgradeExp: upgradeExp,
+            upgradeArmour: upgradeArmour, upgradeHealth: upgradeHealth
         }}>
             {props.children}
         </Context.Provider>

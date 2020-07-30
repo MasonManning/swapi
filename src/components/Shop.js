@@ -33,6 +33,9 @@ export default () => {
     const handleArmourUpg = () => {
         context.upgradeArmour()
     }
+    const handleHealthUpg = () => {
+        context.upgradeHealth()
+    }
     return (
         <div>
             <h1>Welcome Traveler</h1>
@@ -64,8 +67,8 @@ export default () => {
             </div>
             <div style={!isCapSelected ? show : hide}>
                 <Row >
-                    <Col style={style}><p>Health Upgrade</p></Col>
-                    <Col style={style}><p>levels</p></Col>
+                    <Col style={style} onClick={handleHealthUpg}><p>Health Upgrade</p></Col>
+                    <Col style={style}><p>Level: {context.userData.healthUpg}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
