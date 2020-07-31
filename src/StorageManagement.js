@@ -95,7 +95,9 @@ function createSavedItem(userData) {
         missionNum: userData.missionNum,
         creditsUpg: userData.creditsUpg,
         expUpg: userData.expUpg,
-        armourUpg: userData.armourUpg
+        armourUpg: userData.armourUpg,
+        healthUpg: userData.healthUpg, 
+        starshipExpUpg: userData.starshipExpUpg,
     })
 }
 export default StorageManagement

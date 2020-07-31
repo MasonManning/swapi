@@ -36,6 +36,9 @@ export default () => {
     const handleHealthUpg = () => {
         context.upgradeHealth()
     }
+    const handleStarshipExpUpg = () => {
+        context.upgradeStarshipExp()
+    }
     return (
         <div>
             <h1>Welcome Traveler</h1>
@@ -77,8 +80,8 @@ export default () => {
                     <Col style={style}><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style}><p>Exp Upgrade</p></Col>
-                    <Col style={style}><p>levels</p></Col>
+                    <Col style={style} onClick={handleStarshipExpUpg}><p>Exp Upgrade</p></Col>
+                    <Col style={style}><p>Level: {context.userData.starshipExpUpg}</p></Col>
                     <Col style={style}><p>0%</p></Col>
                 </Row>
             </div>
