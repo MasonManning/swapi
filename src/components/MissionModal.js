@@ -27,13 +27,16 @@ function MissionModal(props) {
             console.log(sucRate)
             // Update below to improve odds depending on the starships sent.
             if (level < missionLevel) {
-                sucRate <= 0 ? missionSuccess() : missionFailed()
+                // sucRate <= 0 ? missionSuccess() : missionFailed()
+                sucRate <= 1 ? missionSuccess() : missionFailed()
                 // sucRate <= 2 ? missionSuccess() : missionFailed()
             } else if (level == missionLevel) {
-                sucRate <= 0 ? missionSuccess() : missionFailed()
+                // sucRate <= 0 ? missionSuccess() : missionFailed()
+                sucRate <= 1 ? missionSuccess() : missionFailed()
                 // sucRate <= 3.5 ? missionSuccess() : missionFailed()
             } else if (level > missionLevel) {
-                sucRate <= 0 ? missionSuccess() : missionFailed()
+                // sucRate <= 0 ? missionSuccess() : missionFailed()
+                sucRate <= 1 ? missionSuccess() : missionFailed()
                 // sucRate <= 5 ? missionSuccess() : missionFailed()
             }
         }, toMilliseconds(minute, second))
@@ -55,16 +58,21 @@ function MissionModal(props) {
             context.updateStarship(starship)
             // Random number from 1 to 10
             const rand = Math.floor(Math.random() * 10 + 1)
+            console.log("Health Upgrade Level: " + context.userData.healthUpg)
             // 50% chance of a ship being destroyed
             if (rand <= 5) {
                 context.removeStarship(starship.id)
             } else {
-                starship.health - rand * 10 > 0 ?
-                    starship.health = starship.health - rand * 10 :
+                starship.health - rand + context.userData.healthUpg * 10 > 0 ?
+                    starship.health = calcHealth(rand, starship.health) :
                     starship.health = 1
                 context.updateStarship(starship)
             }
         })
+    }
+    const calcHealth = (rand, health) => {
+        const newHealth = (health - (rand * 10)+ (context.userData.healthUpg/2) * 10)   
+        return newHealth > 100 ? 100 : newHealth
     }
     // const starshipHandler = (ship) => {
     //     const isSelected = selected.find(starship => starship.id === ship.id)
