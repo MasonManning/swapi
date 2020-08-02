@@ -10,18 +10,18 @@ The following react/javascript concepts and features have been used in this proj
 * React Functional Components
 * Api Call Using Fetch
 * Basic Form
-* Context
+* Context (Context.Consumer, Context.Provider)
 * Routing
 * Routing Redirect
 * UseState Hooks
 * useContext Hooks
-* localStorage
+* localStorage (window.localStorage)
 
 ## About
 This react web app has implemented the following functionality:
 * Sign Up 
 * Login
-* Navigate to different pages (Home,Starships,Hangar)
+* Navigate to different pages (Home,Starships,Hangar,Mission,Shop)
 * Once Logged in the SignUp/Login buttons will dissapear
 * Log Out
 * Ability to buy Starships from the Starships page
@@ -31,6 +31,7 @@ This react web app has implemented the following functionality:
 * Ability to send selected starships on missions via the Mission page
 * Use of a Modal to display a list of owned starships to send on Missions
 * Missions take a randomised time to complete
+* Ability to buy upgrades from a shop
 
 ## How To Play
 * Sign Up
