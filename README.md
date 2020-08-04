@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Purpose
 
-The goal of this project is to learn react in a fun manner utilizing the free star wars api hosted at swapi.dev. React will consume the api and display the data using different features of the framework.
+The goal of this project is to learn react in a fun manner utilizing the free star wars api hosted at swapi.dev. React will consume the api and display the data using different features of the framework. No database is used, instead all data is stored in the browser by way of the window.localStorage.
 
 ## Concepts Covered
 The following react/javascript concepts and features have been used in this project:
