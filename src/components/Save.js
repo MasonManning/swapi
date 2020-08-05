@@ -3,12 +3,6 @@ import Db from '../StorageManagement'
 import { UserConsumer } from '../UserContext'
 import StateItem from './StateItem'
 const Save = () => {
-    // Get user Id from the UserContext.
-    // Get all of the saved files from localStorage for said Id.
-    // Display each saved file in a list.
-    // Display an empty save location as well.
-    // Implement Save Override.
-    // Add Back/Cancel Button
     return (
 
         <UserConsumer>

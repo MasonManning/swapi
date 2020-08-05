@@ -23,12 +23,6 @@ function SignUp(props) {
     let init = ()=>{}
     return (
         <div>
-
-        {/* <UserConsumer>
-        {user => (
-            <h1>{user.message}</h1>
-        )}
-        </UserConsumer> */}
             <form onSubmit={handleSubmit}>
 
                 <input type="text" placeholder="Captain Name" onChange={handleChange} name='captainName'/>

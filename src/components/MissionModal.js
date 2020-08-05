@@ -120,7 +120,7 @@ function MissionModal(props) {
                         Close
           </Button>
                     <Button variant="primary" onClick={handleLaunch}>
-                        {/* Upon Launching set the a perperty for the selected ships to inactive in the UserContext.   */}
+                        {/* Upon Launching set the a property for the selected ships to inactive in the UserContext.   */}
                         Launch
           </Button>
                 </Modal.Footer>

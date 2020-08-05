@@ -22,7 +22,6 @@ class Login extends React.Component {
             })
         }
         // GetSaved
-
         event.preventDefault()
         this.props.history.push("/")
     }
