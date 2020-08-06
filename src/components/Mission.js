@@ -44,8 +44,8 @@ function generateDuration(missionLevel) {
     return d
 }
 function generateExp(missionLevel){
-    // TODO:: Add some randomness to the EXP generation process
-    return missionLevel * missionLevel
+    // Added a chance to randomly double the mission Exp.
+    return missionLevel * missionLevel * (Math.floor(Math.random() * 2)+1)
 }
 function generateCredits(missionLevel){
     const credits = missionLevel * 2000 * (randomNumber(missionLevel, missionLevel+5))
