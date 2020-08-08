@@ -14,6 +14,7 @@ import Db from './StorageManagement'
 import Load from './components/Load'
 import Save from './components/Save'
 import Mission from './components/Mission'
+import Button from 'react-bootstrap/Button'
 import {
   BrowserRouter as Router,
   Switch,
@@ -50,8 +51,8 @@ class App extends Component {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                {this.state.auth && <div><li><Link to='/Starships'>Starships</Link></li><li><Link to='/Hangar'>Hangar</Link></li><li><Link to='/Mission'>Mission</Link></li>
-                <li><Link to='/Shop'>Shop</Link></li></div>}
+                {this.state.auth && <div><li><Link to='/Starships'><Button variant='primary'>Starships</Button></Link></li><li><Link to='/Hangar'><Button variant='primary'>Hangar</Button></Link></li><li><Link to='/Mission'><Button variant='primary'>Mission</Button></Link></li>
+                <li><Link to='/Shop'><Button variant='primary'>Shop</Button></Link></li></div>}
                 {!this.state.auth ? <div><li><Link to='/Login'>Login</Link></li><li><Link to='/SignUp'>Sign Up</Link></li></div>: ''}
 
               </ul>
