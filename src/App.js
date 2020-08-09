@@ -43,54 +43,51 @@ class App extends Component {
       <Router>
         <Container>
 
-        {console.log("Auth is" + this.state.auth)}
-        <div className="App container" style={{ backgroundColor: "#CCCCCC" }}>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                {this.state.auth && <div><li><Link to='/Starships'><Button variant='primary'>Starships</Button></Link></li><li><Link to='/Hangar'><Button variant='primary'>Hangar</Button></Link></li><li><Link to='/Mission'><Button variant='primary'>Mission</Button></Link></li>
-                <li><Link to='/Shop'><Button variant='primary'>Shop</Button></Link></li></div>}
-                {!this.state.auth ? <div><li><Link to='/Login'>Login</Link></li><li><Link to='/SignUp'>Sign Up</Link></li></div>: ''}
+          {console.log("Auth is" + this.state.auth)}
+          <div className="App container" style={{ backgroundColor: "#CCCCCC" }}>
+            <div>
+              <nav>
+                <Link to="/"><Button variant='primary'>Home</Button></Link>
+                {this.state.auth && <div><Link to='/Starships'><Button variant='primary'>Starships</Button></Link><Link to='/Hangar'>
+                  <Button variant='primary'>Hangar</Button></Link><Link to='/Mission'><Button variant='primary'>Mission</Button></Link>
+                 <Link to='/Shop'><Button variant='primary'><Button variant='primary'>Shop</Button></Button></Link></div>}
+                {!this.state.auth ? <div><Link to='/Login'><Button variant='primary'>Login</Button></Link><Link to='/SignUp'><Button variant='primary'>Sign Up</Button></Link></div> : ''}
 
-              </ul>
-            </nav>
-            {this.state.auth && <Link to='/Save'>Save</Link>}
-            {this.state.auth && <Link to='/Load'>Load</Link>}
-            <Switch>
-              <PrivateRoute path="/Starships" isAuthenticated={this.state.auth}>
-                <Starship />
-              </PrivateRoute>
-              <PrivateRoute path="/Mission" isAuthenticated={this.state.auth}>
-                <Mission/>
-              </PrivateRoute>
-              <PrivateRoute path="/Save" isAuthenticated={this.state.auth}>
-                <Save/>
-              </PrivateRoute>
-              <PrivateRoute path="/Load" isAuthenticated={this.state.auth}>
-                <Load/>
-              </PrivateRoute>
-              <PrivateRoute path="/Shop" isAuthenticated={this.state.auth}>
-                <Shop/>
-              </PrivateRoute>
-              <Route path='/SignUp'>
-                <SignUp updateAuth={(val) => { this.setState(({ auth: val })) }} auth={this.state.auth} />
-              </Route>
-              <Route path="/Login">
-                <Login updateAuth={(val) => { this.setState(({ auth: val })) }} />
-              </Route>
-              <Route path='/Hangar'>
-                <Hangar />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
+              </nav>
+              {this.state.auth && <Link to='/Save'><Button variant='primary'>Save</Button></Link>}
+              {this.state.auth && <Link to='/Load'><Button variant='primary'>Load</Button></Link>}
+              <Switch>
+                <PrivateRoute path="/Starships" isAuthenticated={this.state.auth}>
+                  <Starship />
+                </PrivateRoute>
+                <PrivateRoute path="/Mission" isAuthenticated={this.state.auth}>
+                  <Mission />
+                </PrivateRoute>
+                <PrivateRoute path="/Save" isAuthenticated={this.state.auth}>
+                  <Save />
+                </PrivateRoute>
+                <PrivateRoute path="/Load" isAuthenticated={this.state.auth}>
+                  <Load />
+                </PrivateRoute>
+                <PrivateRoute path="/Shop" isAuthenticated={this.state.auth}>
+                  <Shop />
+                </PrivateRoute>
+                <Route path='/SignUp'>
+                  <SignUp updateAuth={(val) => { this.setState(({ auth: val })) }} auth={this.state.auth} />
+                </Route>
+                <Route path="/Login">
+                  <Login updateAuth={(val) => { this.setState(({ auth: val })) }} />
+                </Route>
+                <Route path='/Hangar'>
+                  <Hangar />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
+            </div>
+            {this.state.auth && <button onClick={this.handleLogout}>Log Out</button>}
           </div>
-          {this.state.auth && <button onClick={this.handleLogout}>Log Out</button>}
-        </div>
         </Container>
       </Router>
     );
