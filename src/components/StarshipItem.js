@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import PropTypes from 'prop-types'
 import { Context as UserContext } from '../UserContext'
 import { v4 as uuidv4 } from 'uuid'
@@ -31,21 +32,34 @@ function Starships(props) {
     const mission = <div onClick={HandleMission} style={props.starship.available ? { color: selectStyle } : { color: 'grey' }}>
         <h1>Name: {props.starship.name}</h1>
         <h2>Health: {props.starship.health}</h2>
-        <ProgressBar now={props.starship.health} label={props.starship.health}/>
+        <ProgressBar now={props.starship.health} label={props.starship.health} />
     </div>
     return (
         <div>
             {props.mission ? mission :
                 <div style={{ backgroundColor: color }} >
-                    <h1 style={{ color: "#747474" }}>{props.starship.name}</h1>
-                    <hr />
-                    <h2>Cost In Credits: {props.starship.cost_in_credits}</h2>
-                    <h2>Health: {props.starship.health}</h2>
-                    <h2>Essential Crew: {props.starship.crew}</h2>
-                    <h2>Passenger Capacity: {props.starship.passengers}</h2>
-                    <h2>Length: {props.starship.length}</h2>
-                    <h2>Maximum Megalights Per Hour: {props.starship.MGLT}</h2>
-                    <button onClick={handleBuy} disabled={!canBuy}>Buy</button>
+                    <Alert variant='success'>
+                        <Alert.Heading>
+                            <h1>{props.starship.name}</h1>
+                            {props.starship.name}
+                        </Alert.Heading>
+                        {/* <h1 style={{ color: "#747474" }}>{props.starship.name}</h1> */}
+                        <hr />
+                        <p>Cost In Credits: {props.starship.cost_in_credits}</p>
+                        <p>Health: {props.starship.health}</p>
+                        <p>Essential Crew: {props.starship.crew}</p>
+                        <p>Passenger Capacity: {props.starship.passengers}</p>
+                        <p>Length: {props.starship.length}</p>
+                        <p>Maximum Megalights Per Hour: {props.starship.MGLT}</p>
+
+                        {/* <h2>Cost In Credits: {props.starship.cost_in_credits}</h2>
+                        <h2>Health: {props.starship.health}</h2>
+                        <h2>Essential Crew: {props.starship.crew}</h2>
+                        <h2>Passenger Capacity: {props.starship.passengers}</h2>
+                        <h2>Length: {props.starship.length}</h2>
+                        <h2>Maximum Megalights Per Hour: {props.starship.MGLT}</h2> */}
+                        <button onClick={handleBuy} disabled={!canBuy}>Buy</button>
+                    </Alert>
                 </div>
             }
         </div>
