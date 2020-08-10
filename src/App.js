@@ -48,9 +48,9 @@ class App extends Component {
             <div>
               <nav>
                 <Link to="/"><Button variant='primary'>Home</Button></Link>
-                {this.state.auth && <div><Link to='/Starships'><Button variant='primary'>Starships</Button></Link><Link to='/Hangar'>
+                {this.state.auth && <span><Link to='/Starships'><Button variant='primary'>Starships</Button></Link><Link to='/Hangar'>
                   <Button variant='primary'>Hangar</Button></Link><Link to='/Mission'><Button variant='primary'>Mission</Button></Link>
-                 <Link to='/Shop'><Button variant='primary'><Button variant='primary'>Shop</Button></Button></Link></div>}
+                 <Link to='/Shop'><Button variant='primary'><Button variant='primary'>Shop</Button></Button></Link></span>}
                 {!this.state.auth ? <div><Link to='/Login'><Button variant='primary'>Login</Button></Link><Link to='/SignUp'><Button variant='primary'>Sign Up</Button></Link></div> : ''}
 
               </nav>
@@ -93,11 +93,5 @@ class App extends Component {
     );
   }
 }
-
-
-// function About() {
-//   return <Starship></Starship>;
-// }
-
 
 export default App;
