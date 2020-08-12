@@ -21,6 +21,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import LinkButton from './components/LinkButton'
 import Hangar from './components/Hangar';
 import Shop from './components/Shop';
 class App extends Component {
@@ -49,20 +50,18 @@ class App extends Component {
           <div className="App container" style={{ backgroundColor: "#FFFFFF" }}>
             <div>
               <nav>
-                <Link to="/"><Button variant='primary'>Home</Button></Link>
-                {this.state.auth && <span><Link to='/Starships'><Button variant='primary'>Starships</Button></Link><Link to='/Hangar'>
-                  <Button variant='danger'>Hangar</Button></Link><Link to='/Mission'><Button variant='primary'>Mission</Button></Link>
-                  {/* <Link to='/Shop'><Button bsStyle="warning">Shop</Button></Link></span>} */}
-                  {/* <Link to='/Shop' type="button">Shop</Link></span>} */}
-                  <Link to="/Shop">
-                    <button type="button">Shop</button>
-                   </Link>
+                <LinkButton to="/">Home</LinkButton>
+                {this.state.auth && <span><LinkButton to='/Starships'>Starships</LinkButton>
+                <LinkButton to='/Hangar'>Hangar</LinkButton>
+                  <LinkButton to='/Mission'>Misison</LinkButton>
+                  <LinkButton to="/Shop">Shop</LinkButton>
                 </span>}
-                {!this.state.auth ? <div><Link to='/Login'><Button variant='primary'>Login</Button></Link><Link to='/SignUp'><Button variant='primary'>Sign Up</Button></Link></div> : ''}
+                {!this.state.auth ? <div><LinkButton to='/Login'>Login</LinkButton>
+                <LinkButton to='/SignUp'>Sign Up</LinkButton></div> : ''}
 
               </nav>
-              {this.state.auth && <Link to='/Save'><Button variant='primary'>Save</Button></Link>}
-              {this.state.auth && <Link to='/Load'><Button variant='primary'>Load</Button></Link>}
+              {this.state.auth && <LinkButton to='/Save'>Save</LinkButton>}
+              {this.state.auth && <LinkButton to='/Load'>Load</LinkButton>}
               <Switch>
                 <PrivateRoute path="/Starships" isAuthenticated={this.state.auth}>
                   <Starship />
