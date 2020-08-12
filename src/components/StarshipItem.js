@@ -38,9 +38,9 @@ function Starships(props) {
         <div>
             {props.mission ? mission :
                 <div style={{ backgroundColor: color }} >
-                    <Alert variant='success'>
+                    {/* <Alert variant='success'> */}
+                    <Alert variant={canBuy ? 'success' : 'danger'}>
                         <Alert.Heading>
-                            <h1>{props.starship.name}</h1>
                             {props.starship.name}
                         </Alert.Heading>
                         {/* <h1 style={{ color: "#747474" }}>{props.starship.name}</h1> */}

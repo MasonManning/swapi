@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Starship.css'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import StarshipItem from "./StarshipItem"
@@ -37,7 +38,7 @@ class Starship extends Component {
     render() {
         const isLoading = this.state.isLoading
         const starshipsItem = this.state.starships.map((ship, index) => {
-            return <Col md={4} key={index}> <StarshipItem starship={ship} index={index}></StarshipItem></Col>
+            return <Col md={4} key={index}> <StarshipItem  starship={ship} index={index}></StarshipItem></Col>
         })
         return (
             <div>

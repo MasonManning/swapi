@@ -51,8 +51,13 @@ class App extends Component {
               <nav>
                 <Link to="/"><Button variant='primary'>Home</Button></Link>
                 {this.state.auth && <span><Link to='/Starships'><Button variant='primary'>Starships</Button></Link><Link to='/Hangar'>
-                  <Button variant='primary'>Hangar</Button></Link><Link to='/Mission'><Button variant='primary'>Mission</Button></Link>
-                 <Link to='/Shop'><Button variant='primary'><Button variant='primary'>Shop</Button></Button></Link></span>}
+                  <Button variant='danger'>Hangar</Button></Link><Link to='/Mission'><Button variant='primary'>Mission</Button></Link>
+                  {/* <Link to='/Shop'><Button bsStyle="warning">Shop</Button></Link></span>} */}
+                  {/* <Link to='/Shop' type="button">Shop</Link></span>} */}
+                  <Link to="/Shop">
+                    <button type="button">Shop</button>
+                   </Link>
+                </span>}
                 {!this.state.auth ? <div><Link to='/Login'><Button variant='primary'>Login</Button></Link><Link to='/SignUp'><Button variant='primary'>Sign Up</Button></Link></div> : ''}
 
               </nav>
