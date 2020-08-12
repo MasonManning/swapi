@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Context } from '../UserContext'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 
 export default () => {
     const style = { borderStyle: "solid" }
@@ -42,30 +45,32 @@ export default () => {
     return (
         <div>
             <h1>Welcome Traveler</h1>
-            <Row >
-                <Col style={style} onClick={handleCaptain}>Captain</Col>
-                <Col style={style} onClick={handleStarship}>Starship</Col>
+            <Row className='justify-content-md-center'>
+                <ButtonGroup>
+                    <Button onClick={handleCaptain}>Captain</Button>
+                    <Button onClick={handleStarship}>Starship</Button>
+                </ButtonGroup>
             </Row>
             <div style={isCapSelected ? show : hide}>
                 <Row >
-                    <Col style={style} onClick={handleMissionLvl} ><p>Mission Lvl Upgrade</p></Col>
-                    <Col style={style}><p>Level: {context.userData.maxMissionLvl}</p></Col>
-                    <Col style={style}><p>0%</p></Col>
+                    <Col md={3}><Button onClick={handleMissionLvl} variant='success' style={{ width: "100%" }}>Mission Lvl Upgrade</Button></Col>
+                    <Col md={6} className="align-bottom"><Alert variant='success' style={{padding: "0", margin: "0"}}><p>Level: {context.userData.maxMissionLvl}</p></Alert></Col>
+                    <Col ><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style} onClick={handleMissionNum}><p>Mission # Upgrade</p></Col>
-                    <Col style={style}><p>Level: {context.userData.missionNum}</p></Col>
-                    <Col style={style}><p>0%</p></Col>
+                    <Col md={3}><Button onClick={handleMissionNum} variant='success' style={{ width: "100%" }}>Mission # Upgrade</Button></Col>
+                    <Col md={6} className="align-bottom"><Alert variant='success' style={{padding: "0", margin: "0"}}><p>Level: {context.userData.missionNum}</p></Alert></Col>
+                    <Col ><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style} onClick={handleCreditsUpg}><p>Credits Upgrade</p></Col>
-                    <Col style={style}><p>Level: {context.userData.creditsUpg}</p></Col>
-                    <Col style={style}><p>0%</p></Col>
+                    <Col md={3}><Button onClick={handleCreditsUpg} variant='success' style={{ width: "100%" }}>Credits Upgrade</Button></Col>
+                    <Col md={6} className="align-bottom"><Alert variant='success' style={{padding: "0", margin: "0"}}><p>Level: {context.userData.creditsUpg}</p></Alert></Col>
+                    <Col ><p>0%</p></Col>
                 </Row>
                 <Row >
-                    <Col style={style} onClick={handleExpUpg}><p>Exp Upgrade</p></Col>
-                    <Col style={style} ><p>Level: {context.userData.expUpg}</p></Col>
-                    <Col style={style}><p>0%</p></Col>
+                    <Col md={3} ><Button onClick={handleExpUpg} style={{ width: "100%" }} variant='success'>Exp Upgrade</Button></Col>
+                    <Col md={6} ><Alert variant='success' style={{padding: "0", margin: "0"}}><p>Level: {context.userData.expUpg}</p></Alert></Col>
+                    <Col ><p>0%</p></Col>
                 </Row>
             </div>
             <div style={!isCapSelected ? show : hide}>

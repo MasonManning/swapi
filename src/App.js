@@ -92,7 +92,7 @@ class App extends Component {
                 </Route>
               </Switch>
             </div>
-            {this.state.auth && <button onClick={this.handleLogout}>Log Out</button>}
+            {this.state.auth && <Button onClick={this.handleLogout}>Log Out</Button>}
           </div>
         </Container>
       </Router>

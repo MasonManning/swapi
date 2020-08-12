@@ -38,12 +38,10 @@ function Starships(props) {
         <div>
             {props.mission ? mission :
                 <div style={{ backgroundColor: color }} >
-                    {/* <Alert variant='success'> */}
                     <Alert variant={canBuy ? 'success' : 'danger'}>
                         <Alert.Heading>
                             {props.starship.name}
                         </Alert.Heading>
-                        {/* <h1 style={{ color: "#747474" }}>{props.starship.name}</h1> */}
                         <hr />
                         <p>Cost In Credits: {props.starship.cost_in_credits}</p>
                         <p>Health: {props.starship.health}</p>
@@ -51,19 +49,11 @@ function Starships(props) {
                         <p>Passenger Capacity: {props.starship.passengers}</p>
                         <p>Length: {props.starship.length}</p>
                         <p>Maximum Megalights Per Hour: {props.starship.MGLT}</p>
-
-                        {/* <h2>Cost In Credits: {props.starship.cost_in_credits}</h2>
-                        <h2>Health: {props.starship.health}</h2>
-                        <h2>Essential Crew: {props.starship.crew}</h2>
-                        <h2>Passenger Capacity: {props.starship.passengers}</h2>
-                        <h2>Length: {props.starship.length}</h2>
-                        <h2>Maximum Megalights Per Hour: {props.starship.MGLT}</h2> */}
-                        <button onClick={handleBuy} disabled={!canBuy}>Buy</button>
+                        <Button onClick={handleBuy} variant={canBuy ? 'success' : 'danger'} disabled={!canBuy}>Buy</Button>
                     </Alert>
                 </div>
             }
         </div>
-
     )
 }
 Starships.propTypes = {
