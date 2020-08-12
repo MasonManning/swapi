@@ -44,7 +44,9 @@ class App extends Component {
         <Container>
 
           {console.log("Auth is" + this.state.auth)}
-          <div className="App container" style={{ backgroundColor: "#CCCCCC" }}>
+          {/* <div className="App container" style={{ backgroundColor: "#CCCCCC" }}> */}
+          {/* Inside Color */}
+          <div className="App container" style={{ backgroundColor: "#FFFFFF" }}>
             <div>
               <nav>
                 <Link to="/"><Button variant='primary'>Home</Button></Link>

@@ -28,16 +28,16 @@ function MissionModal(props) {
             // Update below to improve odds depending on the starships sent.
             if (level < missionLevel) {
                 // sucRate <= 0 ? missionSuccess() : missionFailed()
-                sucRate <= 1 ? missionSuccess() : missionFailed()
-                // sucRate <= 2 ? missionSuccess() : missionFailed()
+                // sucRate <= 1 ? missionSuccess() : missionFailed()
+                sucRate <= 2 ? missionSuccess() : missionFailed()
             } else if (level == missionLevel) {
                 // sucRate <= 0 ? missionSuccess() : missionFailed()
-                sucRate <= 1 ? missionSuccess() : missionFailed()
-                // sucRate <= 3.5 ? missionSuccess() : missionFailed()
+                // sucRate <= 1 ? missionSuccess() : missionFailed()
+                sucRate <= 3.5 ? missionSuccess() : missionFailed()
             } else if (level > missionLevel) {
                 // sucRate <= 0 ? missionSuccess() : missionFailed()
-                sucRate <= 1 ? missionSuccess() : missionFailed()
-                // sucRate <= 5 ? missionSuccess() : missionFailed()
+                // sucRate <= 1 ? missionSuccess() : missionFailed()
+                sucRate <= 5 ? missionSuccess() : missionFailed()
             }
         }, toMilliseconds(minute, second))
         setShow(false)
