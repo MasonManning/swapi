@@ -15,13 +15,15 @@ class Starship extends Component {
             isLoading: true,
             next: "",
             previous: "",
-            show: false
+            showNext: false,
+            showPrevious: false
         }
         this.handleCptChange = this.handleCptChange.bind(this)
         this.handleCptSubmit = this.handleCptSubmit.bind(this)
         this.handleNext = this.handleNext.bind(this)
         this.handlePrevious = this.handlePrevious.bind(this)
-        this.target = createRef()
+        this.targetNext = createRef()
+        this.targetPrevious = createRef()
     }
     handleCptChange(event) {
         this.setState({ captainName: event.target.value })
@@ -35,41 +37,49 @@ class Starship extends Component {
             fetch(this.state.next)
                 .then(res => res.json())
                 .then(data => {
+                    data.next|| setTimeout(() => { this.setState({ showNext: false }) }, 1000)
                     this.setState(ps => {
-                        const list = []
-                        console.log(data)
-                        data.previous ? console.log("there is a previous") : console.log("Previous is null")
-                        data.next || console.log("No Next!!!!")
                         return ({
                             starships: data.results,
                             isLoading: false,
                             previous: data.previous ? data.previous : '',
-                            next: data.next ? data.next : ''
+                            next: data.next ? data.next : '',
+                            showNext: data.next ? false: true 
                         })
                     })
                 })
+        }else{
+
+            this.setState({showNext: true})
+            setTimeout(() => { this.setState({ showNext: false }) }, 1000)
         }
     }
     handlePrevious(event) {
         if (this.state.previous) {
-            fetch("https://swapi.dev/api/starships/")
+            fetch(this.state.previous)
                 .then(res => res.json())
                 .then(data => {
+                    data.previous || setTimeout(() => { this.setState({ showPrevious: false }) }, 1000)
                     this.setState(ps => {
                         const list = []
                         console.log(data)
                         data.previous ? console.log("there is a previous") : console.log("Previous is null")
                         data.previous || console.log("No Previous!!!!")
                         // console.log(data.previous)
+                        // data.previous || setTimeout(() => {this.setState({showPrevious: false})}, 1000)
                         return ({
                             starships: data.results,
                             isLoading: false,
                             previous: data.previous ? data.previous : '',
                             next: data.next ? data.next : '',
-                            show: data.previous ? false : true
+                            showPrevious: data.previous ? false : true,
+
                         })
                     })
                 })
+        } else {
+            this.setState({showPrevious: true})
+            setTimeout(() => { this.setState({ showPrevious: false }) }, 1000)
         }
     }
     componentDidMount() {
@@ -103,8 +113,8 @@ class Starship extends Component {
                 <Row>
                     {!this.state.isLoading && starshipsItem}
                 </Row>
-                <Button onClick={this.handleNext} ref={this.target}>Next</Button>
-                <Overlay ref={this.target.current} show={this.state.show} placement="right">
+                <Button onClick={this.handleNext} ref={this.targetNext}>Next</Button>
+                <Overlay target={this.targetNext.current} show={this.state.showNext} placement="top">
                     {({ placement, arrowProps, show: _show, popper, ...props }) => (
                         <div
                             {...props}
@@ -116,11 +126,27 @@ class Starship extends Component {
                                 ...props.style,
                             }}
                         >
-                            Simple tooltip
+                            No More Starships Next
                         </div>
                     )}
                 </Overlay>
-                <Button onClick={this.handlePrevious}>Previous</Button>
+                <Button onClick={this.handlePrevious} ref={this.targetPrevious}>Previous</Button>
+                <Overlay target={this.targetPrevious.current} show={this.state.showPrevious} placement="top">
+                    {({ placement, arrowProps, show: _show, popper, ...props }) => (
+                        <div
+                            {...props}
+                            style={{
+                                backgroundColor: 'rgba(255, 100, 100, 0.85)',
+                                padding: '2px 10px',
+                                color: 'white',
+                                borderRadius: 3,
+                                ...props.style,
+                            }}
+                        >
+                            No More Starships Previous
+                        </div>
+                    )}
+                </Overlay>
             </div>
         )
     }
