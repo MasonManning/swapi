@@ -21,6 +21,8 @@ function UserContext(props) {
     const [healthUpg, setHealthUpg] = useState(0)
     const [starshipExpUpg, setStarshipExpUpg] = useState(0)
 
+    const [save,setSave] = useState([])
+
     const initSignUp = (userData) => {
         setUsername(userData.username)
         setPassword(userData.password)
@@ -38,6 +40,7 @@ function UserContext(props) {
         setArmourUpg(0)
         setHealthUpg(0)
         setStarshipExpUpg(0)
+        setSave([])
     }
     const login = (userData) => {
         setUsername(userData.username)
@@ -57,6 +60,7 @@ function UserContext(props) {
             setArmourUpg(save[save.length - 1].armourUpg)
             setHealthUpg(save[save.length - 1].healthUpg)
             setStarshipExpUpg(save[save.length - 1].setStarshipExpUpg)
+            setSave(save)
         } else {
             setCredits(500000)
             setStarship([])
@@ -70,6 +74,7 @@ function UserContext(props) {
             setArmourUpg(0)
             setHealthUpg(0)
             setStarshipExpUpg(0)
+            setSave([])
         }
     }
 
@@ -129,6 +134,17 @@ function UserContext(props) {
     const upgradeStarshipExp = () => {
         starshipExpUpg < 10 && setStarshipExpUpg(ps => ps + 1)
     }
+    const setSaveState = (newSave) => {
+        console.log("SetState Initial new save:")
+        console.log(newSave)
+        console.log(save)
+        console.log("save is: ")
+        setSave(ps => ([...ps, newSave]))
+        console.log(save)
+    }
+    const getSaveState = () => {
+        return save
+    }
     return (
         <Context.Provider value={{
             userData: {
@@ -146,7 +162,8 @@ function UserContext(props) {
             upgradeMaxMissionLevel: upgradeMaxMissionLevel, upgradeMissionNum,
             upgradeCredits: upgradeCredits, upgradeExp: upgradeExp,
             upgradeArmour: upgradeArmour, upgradeHealth: upgradeHealth,
-            upgradeStarshipExp: upgradeStarshipExp,
+            upgradeStarshipExp: upgradeStarshipExp, setSaveState: setSaveState,
+            getSaveState: getSaveState
         }}>
             {props.children}
         </Context.Provider>
